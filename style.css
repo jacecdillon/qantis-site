@@ -1,6 +1,13 @@
 /*
 Theme Name: Qantis Custom Theme
-Author: Jace Dillon & Bohdan
-Description: Custom classic thema voor Qantis.nl op basis van SCF en eigen HTML/CSS.
+Author: Jace Dillon
+Description: Custom WordPress thema voor Qantis.nl gebaseerd op Secure Custom Fields (SCF) en HTML5/CSS3.
 Version: 1.0.0
+Text Domain: qantis
 */
+
+/* Global Custom Properties */
+:root {
+  --accent: #0056b3;
+  --font-main: 'Inter', sans-serif;
+}
