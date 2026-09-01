@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -14,11 +14,9 @@
 <header class="site-header">
     <div class="header-container">
 
-        <!-- Logo -->
         <div class="site-branding">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="nav-logo">
                 <svg viewBox="0 0 230 58" xmlns="http://www.w3.org/2000/svg" style="height: 40px; width: auto; display: block;">
-                    <!-- Q mark -->
                     <rect x="0" y="1" width="50" height="50" rx="10" fill="#2d2d2d"></rect>
                     <rect x="7" y="8" width="30" height="30" rx="4" fill="#0d1b2e"></rect>
                     <rect x="26" y="30" width="24" height="21" fill="#0d1b2e"></rect>
@@ -43,11 +41,15 @@
             ) );
             ?>
         </nav>
+
         <div class="header-contact">
             <a href="tel:0883520600" class="phone-link">
-            <span class="phone-icon">📞</span>
-            <span>088 – 35 20 600</span>
-        </a>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>088 &ndash; 35 20 600</span>
+            </a>
         </div>  
+
     </div>
 </header>
