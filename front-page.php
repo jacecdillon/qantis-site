@@ -5,7 +5,7 @@ get_template_part('template-parts/header');
 ?>
 
 <main>  
-    <h1>Welkon denk</h1>
+
 </main>
 
 <?php
