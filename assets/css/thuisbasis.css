@@ -1,0 +1,125 @@
+/* Thuisbasis Sectie Styling */
+
+.thuisbasis-section {
+    background-color: var(--navy-dark, #0b1528);
+    padding: 80px 48px;
+    color: #ffffff;
+}
+
+.thuisbasis-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start; /* Zorgt dat de kolom niet nodeloos verticaal uitrekt */
+}
+
+/* Linkerkolom: Afbeelding / Media */
+.thuisbasis-media {
+    width: 100%;
+}
+
+.thuisbasis-media img,
+.thuisbasis-placeholder {
+    width: 100%;
+    height: 380px; /* Vaste compacte hoogte volgens design */
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Rechterkolom Content */
+.thuisbasis-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.thuisbasis-content .section-subtitle {
+    color: var(--blue-light, #3898ec);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.thuisbasis-content .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.thuisbasis-content .section-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.thuisbasis-content .section-description p {
+    margin-bottom: 12px;
+}
+
+.thuisbasis-content .section-description p:last-child {
+    margin-bottom: 0;
+}
+
+.thuisbasis-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.stat-card {
+    background-color: #112239;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--blue-light, #3898ec);
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.35;
+    max-width: 90%;
+}
+
+/* Responsive / Mobiel */
+@media (max-width: 992px) {
+    .thuisbasis-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .thuisbasis-media img,
+    .thuisbasis-placeholder {
+        height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .thuisbasis-section {
+        padding: 48px 20px;
+    }
+
+    .thuisbasis-stats {
+        grid-template-columns: 1fr;
+    }
+}

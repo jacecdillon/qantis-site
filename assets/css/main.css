@@ -1,7 +1,7 @@
 :root {
-    --navy: #0d1b2e;
-    --navy-dark: #050a12;
-    --navy2: #14243b;
+    --navy: #0D1B2E;
+    --navy-dark: #0d1b2e;
+    --navy2: #14243B;
     --navy3: #162d4a;
     --blue: #1782C4;
     --blue-light: #3fa0d8;
@@ -187,7 +187,6 @@ main,
     background-repeat: repeat, no-repeat;
     background-size: 60px 70px, auto;
     padding: 140px 48px 100px;
-    overflow: hidden;
 }
 
 .hero-glow {
@@ -296,8 +295,7 @@ main,
 }
 
 .prop-card {
-    padding: 32px 36px;
-    position: relative;
+    padding: 24px 20px;
     border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
@@ -388,6 +386,102 @@ main,
 .prop-link.link-orange { color: var(--orange); }
 .prop-link.link-green { color: var(--green); }
 
+/* Sectie en kopteksten */
+
+.prop-section {
+    background-color: var(--navy2);
+    padding: 80px 0;
+}
+
+.prop-section .inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    text-align: center;
+}
+
+.section-tag {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--blue-light);
+    margin-bottom: 1px;
+    letter-spacing: -0.5px;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.section-sub {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 56px;
+    line-height: 1.6;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+}
+
+.prop-grid .prop-card {
+    background-color: #0b1727;
+    border-radius: 12px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.prop-bullets-container {
+    flex-grow: 1;
+    margin-bottom: 24px;
+}
+
+.prop-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prop-bullets li {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    padding-left: 18px;
+    line-height: 1.5;
+}
+
+.prop-bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.prop-bullets.list-blue li::before { color: var(--blue-light); }
+.prop-bullets.list-orange li::before { color: var(--orange); }
+.prop-bullets.list-green li::before { color: var(--green); }
+
+.prop-card .prop-link {
+    margin-top: auto;
+}
+
+/* Footer */
+
 .site-footer {
     background-color: var(--navy-dark);
     padding-top: 80px;
@@ -420,15 +514,14 @@ main,
     margin-bottom: 32px;
 }
 
-.contact-details p,
-.address-details p {
+.contact-details {
+    margin-bottom: 24px;
+}
+
+.contact-details p {
     font-size: 15px;
     color: var(--white);
     margin-bottom: 6px;
-}
-
-.contact-details {
-    margin-bottom: 24px;
 }
 
 .email-link {
@@ -443,6 +536,12 @@ main,
 .address-details {
     margin-bottom: 24px;
     color: rgba(255, 255, 255, 0.7);
+}
+
+.address-details p {
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 6px;
 }
 
 .footer-map {
@@ -534,10 +633,9 @@ main,
 }
 
 .footer-bottom {
-    background-color: var(--navy);
     padding: 24px 48px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    background-color:#112240;
+    background-color: #112240;
 }
 
 .footer-bottom-container {
@@ -563,49 +661,11 @@ main,
     color: var(--white);
 }
 
-/* Sectie en kopteksten */
-
-.prop-section {
-    background-color: var(--navy);
-    padding: 80px 0;
-}
-
-.prop-section .inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 48px;
-}
-
-.section-tag {
-    font-size: 42px;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-}
-
-.section-sub {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 56px;
-    line-height: 1.6;
-    max-width: 680px;
-}
-
-.prop-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.prop-grid .prop-card {
-    background-color: #0b1727;
-    border-radius: 12px;
-    padding: 36px 32px;
-}
+/* Responsive Styles */
 
 @media (max-width: 900px) {
-    .propositions-container {
+    .propositions-container,
+    .prop-grid {
         grid-template-columns: 1fr;
     }
     .prop-card {

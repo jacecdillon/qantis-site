@@ -1,0 +1,51 @@
+
+.cta-banner-section {
+    background-color: var(--navy3);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-banner-container {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-banner-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.cta-banner-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.cta-banner-btn {
+    background-color: var(--blue-primary, #1d82ca);
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 12px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    
+}
+
+.cta-banner-btn:hover {
+    background-color: #176db0;
+    transform: translateY(-2px);
+}
+
+.cta-banner-btn a {
+    text-decoration: none;
+    color: white;
+}

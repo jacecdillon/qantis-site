@@ -36,11 +36,12 @@ get_template_part('template-parts/header');
             <?php if ( have_rows('proposities') ) : ?>
                 <?php $i = 1; while ( have_rows('proposities') ) : the_row(); 
                     $accent = get_sub_field('kleur_accent') ?: 'blue';
-                    $tags = get_sub_field('tags_lijst');
+                    $tags = get_sub_field('tags_lijst'); 
+                    $titel = get_sub_field('titel');
                 ?>
                     <article class="prop-card border-<?php echo esc_attr($accent); ?>">
                         <span class="prop-number"><?php echo sprintf('%02d', $i); ?></span>
-                        <h2 class="prop-title"><?php echo esc_html( get_sub_field('titel') ); ?></h2>
+                        <h2 class="prop-title"><?php echo esc_html($titel); ?></h2>
                         <p class="prop-description"><?php echo esc_html( get_sub_field('beschrijving') ); ?></p>
                         
                         <?php if ( $tags ) : 
@@ -54,80 +55,63 @@ get_template_part('template-parts/header');
                         <?php endif; ?>
 
                         <a href="<?php echo esc_url( get_sub_field('pagina_link') ); ?>" class="prop-link link-<?php echo esc_attr($accent); ?>">
-                            Meer over <?php echo esc_html( get_sub_field('titel') ); ?> &rarr;
+                            Meer over <?php echo esc_html($titel); ?> &rarr;
                         </a>
                     </article>
                 <?php $i++; endwhile; ?>
-            <?php else : ?>
-                <article class="prop-card border-blue">
-                    <span class="prop-number">01</span>
-                    <h2 class="prop-title">IT Staffing</h2>
-                    <p class="prop-description">De juiste IT-professional op de juiste plek. Van cloud-engineer tot functioneel beheerder.</p>
-                    <div class="prop-tags">
-                        <span class="tag">Cloud</span><span class="tag">Security</span><span class="tag">Infrastructuur</span>
-                    </div>
-                    <a href="<?php echo esc_url( site_url( '/it-staffing/' ) ); ?>" class="prop-link link-blue">Meer over IT Staffing &rarr;</a>
-                </article>
-                <article class="prop-card border-orange">
-                    <span class="prop-number">02</span>
-                    <h2 class="prop-title">OT Civiel & Industrie</h2>
-                    <p class="prop-description">Waar ICT en industrie elkaar ontmoeten. Bruggen, sluizen, tunnels en gemalen.</p>
-                    <div class="prop-tags">
-                        <span class="tag">Projectmanagement</span><span class="tag">Risicomanagement</span>
-                    </div>
-                    <a href="<?php echo esc_url( site_url( '/ot-civiel-industrie/' ) ); ?>" class="prop-link link-orange">Meer over OT Civiel &rarr;</a>
-                </article>
-                <article class="prop-card border-green">
-                    <span class="prop-number">03</span>
-                    <h2 class="prop-title">QAAS MKB</h2>
-                    <p class="prop-description">Trusted advisor voor het MKB. Senior ICT-expertise op flexibele basis.</p>
-                    <div class="prop-tags">
-                        <span class="tag">Strategisch</span><span class="tag">Tactisch</span>
-                    </div>
-                    <a href="<?php echo esc_url( site_url( '/qaas-mkb/' ) ); ?>" class="prop-link link-green">Meer over QAAS &rarr;</a>
-                </article>
             <?php endif; ?>
         </div>
     </section>
 
-    <section class="section prop-section" id="propositions">
+    <section class="prop-section" id="propositions">
         <div class="inner">
-            <p class="section-tag"><?php echo esc_html( get_field('proposities_section_tag') ?: 'Wat wij doen' ); ?></p>
-            <h2 class="section-title"><?php echo esc_html( get_field('proposities_section_title') ?: 'Drie proposities. Een Qantis' ); ?></h2>
-            <p class="section-sub"><?php echo esc_html( get_field('proposities_section_sub') ?: 'IT en OT leveren talent; QAAS borgt strategie tot operatie. Drie heldere proposities, één belofte: kwaliteit en snelheid.' ); ?></p>
-        </div>
+            <p class="section-tag"><?php echo esc_html( get_field('proposities_section_tag') ); ?></p>
+            <h2 class="section-title"><?php echo esc_html( get_field('proposities_section_title') ); ?></h2>
+            <p class="section-sub"><?php echo esc_html( get_field('proposities_section_sub') ); ?></p>
 
-        <div class="inner prop-grid">
-            <?php if ( have_rows('proposities') ) : ?>
-                <?php while ( have_rows('proposities') ) : the_row(); 
-                    $accent = get_sub_field('kleur_accent') ?: 'blue';
-                    $bullets = get_sub_field('bullet_points');
+            <div class="prop-grid">
+                <?php if( have_rows('proposities') ): while( have_rows('proposities') ): the_row(); 
+                    $accent_color = get_sub_field('kleur_accent') ?: 'blue';
+                    $bullet_field = get_sub_field('bullet_points');
+                    $bullets = $bullet_field ? explode("\n", str_replace("\r", "", $bullet_field)) : [];
+                    $subtitel = get_sub_field('subtitel') ?: get_sub_field('korte_subtitel');
+                    $titel = get_sub_field('titel');
                 ?>
-                    <article class="prop-card card-<?php echo esc_attr($accent); ?>">
-                        <p class="prop-num"><?php echo esc_html( get_sub_field('subtitel') ); ?></p>
-                        <h3 class="prop-title"><?php echo esc_html( get_sub_field('titel') ); ?></h3>
-                        <p class="prop-desc"><?php echo esc_html( get_sub_field('beschrijving') ); ?></p>
-                    
-                        <?php if ( $bullets ) : 
-                            $bullets_array = explode("\n", str_replace("\r", "", $bullets));
-                        ?>
-                            <ul class="prop-list">
-                                <?php foreach ( $bullets_array as $bullet ) : 
-                                    if ( trim($bullet) === '' ) continue;
-                                ?>
-                                    <li><?php echo esc_html( trim($bullet) ); ?></li>
-                                <?php endforeach; ?>
-                            </ul>
+                    <div class="prop-card border-<?php echo esc_attr($accent_color); ?>">
+                        <?php if ( $subtitel ) : ?>
+                            <span class="prop-number"><?php echo esc_html($subtitel); ?></span>
+                        <?php endif; ?>
+                        
+                        <h3 class="prop-title"><?php echo esc_html($titel); ?></h3>
+                        <p class="prop-description"><?php echo esc_html( get_sub_field('beschrijving') ); ?></p>
+
+                        <?php if ( !empty($bullets) ) : ?>
+                            <div class="prop-bullets-container">
+                                <ul class="prop-bullets list-<?php echo esc_attr($accent_color); ?>">
+                                    <?php foreach($bullets as $bullet): if(!empty(trim($bullet))): ?>
+                                        <li><?php echo esc_html($bullet); ?></li>
+                                    <?php endif; endforeach; ?>
+                                </ul>
+                            </div>
                         <?php endif; ?>
 
-                        <a href="<?php echo esc_url( get_sub_field('pagina_link') ); ?>" class="prop-link">
-                            Meer over <?php echo esc_html( get_sub_field('titel') ); ?> &rarr;
+                        <a href="<?php echo esc_url( get_sub_field('pagina_link') ); ?>" class="prop-link link-<?php echo esc_attr($accent_color); ?>">
+                            Meer over <?php echo esc_html($titel); ?> <span class="arrow">&rarr;</span>
                         </a>
-                    </article>
-                <?php endwhile; ?>
-            <?php endif; ?>
+                    </div>
+                <?php endwhile; endif; ?>
+            </div>
         </div>
     </section>
+
+    <?php get_template_part('template-parts/thuisbasis'); ?>
+
+    <?php get_template_part('template-parts/over-qantis'); ?>
+
+    <?php get_template_part('template-parts/opdrachten'); ?>
+
+    <?php get_template_part('template-parts/cta-banner'); ?>
+
 </main>
 
 <?php
