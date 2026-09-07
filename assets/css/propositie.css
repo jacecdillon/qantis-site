@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Volledige Propositie Theme Styles
+   ========================================================================== */
+
+:root {
+    --bg-dark: #071327;
+    --bg-card: #0c1e3a;
+    --bg-card-hover: #10264a;
+    --accent-blue: #0084ff;
+    --text-white: #ffffff;
+    --text-muted: #8899ac;
+    --border-light: rgba(255, 255, 255, 0.08);
+}
+
+body, .propositie-page {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Typography & Tags */
+.section-tag, .hero-tag {
+    color: var(--accent-blue);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 12px;
+    color: var(--text-white);
+}
+
+.section-subtext {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 0 40px;
+}
+
+/* Knoppen */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0070da;
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-light);
+    color: #fff;
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 1. Hero */
+.hero-section {
+    padding: 80px 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 20px;
+    line-height: 1.1;
+}
+
+.hero-text {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-img, .stappen-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Diensten Grid */
+.diensten-grid-section {
+    padding: 80px 0;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.dienst-kaart {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 32px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.dienst-kaart:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    background: var(--bg-card-hover);
+}
+
+.dienst-icoon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 20px;
+}
+
+.dienst-titel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.dienst-tekst {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 3. Stappen Plan */
+.stappen-section {
+    padding: 80px 0;
+}
+
+.stappen-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.stappen-lijst {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.stap-item {
+    display: flex;
+    gap: 18px;
+}
+
+.stap-nummer {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-blue);
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.stap-info h4 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.stap-info p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* 4. Extra Grid */
+.extra-sectie {
+    padding: 80px 0;
+}
+
+.extra-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.extra-grid-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bullet-dot {
+    color: var(--accent-blue);
+    font-size: 1.4rem;
+}
+
+.extra-card-titel {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* 5. CTA Banner */
+.cta-banner {
+    background-color: var(--accent-blue);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: #fff;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 32px;
+}
+
+.btn-cta {
+    background: #ffffff;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.btn-cta:hover {
+    background: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-container, .stappen-container { grid-template-columns: 1fr; }
+    .grid-wrapper { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .grid-wrapper, .extra-grid-wrapper { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.5rem; }
+}
+
+/* ==========================================================================
+   Propositie Subnavigatie Bar
+   ========================================================================== */
+
+.propositie-nav-bar {
+    background-color: #09172e;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+}
+
+.propositie-nav-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+.propositie-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.propositie-tab:last-child {
+    border-right: none;
+}
+
+.propositie-tab:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #ffffff;
+}
+
+.propositie-tab.active {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+.tab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.tab-label {
+    letter-spacing: 0.3px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .propositie-nav-container {
+        grid-template-columns: 1fr;
+    }
+    .propositie-tab {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
