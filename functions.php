@@ -11,6 +11,9 @@ function qantis_theme_setup() {
 }
 add_action('after_setup_theme', 'qantis_theme_setup');
 
+require_once get_template_directory() . '/inc/cpt-registratie.php';
+require_once get_template_directory() . '/inc/contact-handler.php';
+
 function qantis_enqueue_assets() {
     wp_enqueue_style( 'qantis-style', get_stylesheet_uri(), array(), '1.0.0' );
 
@@ -58,9 +61,25 @@ function qantis_enqueue_assets() {
             filemtime(get_template_directory() . '/assets/css/cta-banner.css')
         );
     }
+
+    if ( file_exists( get_template_directory() . '/assets/js/main.js' ) ) {
+        wp_enqueue_script(
+            'qantis-js',
+            get_template_directory_uri() . '/assets/js/main.js',
+            array('jquery'),
+            filemtime(get_template_directory() . '/assets/js/main.js'),
+            true
+        );
+
+        wp_localize_script('qantis-js', 'qantis_ajax', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('qantis_contact_nonce')
+        ));
+    }
 }
 add_action('wp_enqueue_scripts', 'qantis_enqueue_assets');
 
+// 4. SCF / ACF Options Page Registratie
 if ( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title' => 'Site Opties',

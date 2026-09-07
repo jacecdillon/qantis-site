@@ -18,7 +18,7 @@ get_template_part('template-parts/header');
                 ?>
             </h1>
             <p class="hero-description">
-                <?php echo esc_html( get_field('hero_beschrijving') ?: 'Qantis levert IT-talent en strategische regie voor organisaties in Noord-Holland en daarbuiten.' ); ?>
+                <?php echo ( get_field('hero_beschrijving') ?: 'Qantis levert IT-talent en strategische regie voor organisaties in Noord-Holland en daarbuiten.' ); ?>
             </p>
             <div class="hero-buttons">
                 <a href="<?php echo esc_url( get_field('hero_primary_btn_url') ?: '#propositions' ); ?>" class="btn btn-primary">
