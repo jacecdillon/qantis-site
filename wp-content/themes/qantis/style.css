@@ -9,3 +9,29 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+.extra-sectie {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.expertise-item {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.main_menu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
