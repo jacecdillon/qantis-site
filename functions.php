@@ -26,40 +26,32 @@ function qantis_enqueue_assets() {
         );
     }
 
-    if ( file_exists( get_template_directory() . '/assets/css/thuisbasis.css' ) ) {
-        wp_enqueue_style(
-            'qantis-thuisbasis',
-            get_template_directory_uri() . '/assets/css/thuisbasis.css',
-            array('qantis-style'),
-            filemtime(get_template_directory() . '/assets/css/thuisbasis.css')
-        );
+    // Specifieke CSS-bestanden inladen op basis van de geopende pagina
+    if ( is_front_page() ) {
+        $front_styles = array('thuisbasis', 'over-qantis', 'opdrachten', 'cta-banner');
+        foreach ( $front_styles as $style ) {
+            $path = '/assets/css/' . $style . '.css';
+            if ( file_exists( get_template_directory() . $path ) ) {
+                wp_enqueue_style(
+                    'qantis-' . $style,
+                    get_template_directory_uri() . $path,
+                    array('qantis-main-style'),
+                    filemtime(get_template_directory() . $path)
+                );
+            }
+        }
     }
 
-    if ( file_exists( get_template_directory() . '/assets/css/over-qantis.css' ) ) {
-        wp_enqueue_style(
-            'qantis-over-qantis',
-            get_template_directory_uri() . '/assets/css/over-qantis.css',
-            array('qantis-style'),
-            filemtime(get_template_directory() . '/assets/css/over-qantis.css')
-        );
-    }
-
-    if ( file_exists( get_template_directory() . '/assets/css/opdrachten.css' ) ) {
-        wp_enqueue_style(
-            'qantis-opdrachten',
-            get_template_directory_uri() . '/assets/css/opdrachten.css',
-            array('qantis-style'),
-            filemtime(get_template_directory() . '/assets/css/opdrachten.css')
-        );
-    }
-
-    if ( file_exists( get_template_directory() . '/assets/css/cta-banner.css' ) ) {
-        wp_enqueue_style(
-            'qantis-cta-banner',
-            get_template_directory_uri() . '/assets/css/cta-banner.css',
-            array('qantis-style'),
-            filemtime(get_template_directory() . '/assets/css/cta-banner.css')
-        );
+    if ( is_page_template('page-propositie.php') ) {
+        $path = '/assets/css/propositie.css';
+        if ( file_exists( get_template_directory() . $path ) ) {
+            wp_enqueue_style(
+                'qantis-propositie-style',
+                get_template_directory_uri() . $path,
+                array('qantis-main-style'),
+                filemtime(get_template_directory() . $path)
+            );
+        }
     }
 
     if ( file_exists( get_template_directory() . '/assets/js/main.js' ) ) {
@@ -79,7 +71,6 @@ function qantis_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'qantis_enqueue_assets');
 
-// 4. SCF / ACF Options Page Registratie
 if ( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title' => 'Site Opties',
