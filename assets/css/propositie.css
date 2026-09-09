@@ -25,7 +25,6 @@ body, .propositie-page {
     padding: 0 24px;
 }
 
-/* Typography & Tags */
 .section-tag, .hero-tag {
     color: var(--accent-blue);
     font-size: 0.8rem;
@@ -50,7 +49,6 @@ body, .propositie-page {
     margin: 0 0 40px;
 }
 
-/* Knoppen */
 .btn {
     display: inline-flex;
     align-items: center;

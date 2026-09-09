@@ -99,7 +99,6 @@ main,
     display: block;
 }
 
-/* Primary Navigation Menu */
 .main-navigation {
     display: flex;
     flex: 1;
@@ -145,7 +144,6 @@ main,
     font-weight: 600;
 }
 
-/* Submenu / Dropdowns */
 .main-navigation .sub-menu {
     position: absolute;
     top: 100%;
@@ -682,7 +680,6 @@ main,
     filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);
 }
 
-/* Footer Contact Form */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -753,7 +750,6 @@ main,
     background-color: var(--blue-light);
 }
 
-/* Footer Bottom Bar */
 .footer-bottom {
     padding: 24px 48px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
