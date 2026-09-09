@@ -61,7 +61,6 @@
             <form id="qantis-contact-form" class="contact-form">
                 <?php wp_nonce_field('qantis_contact_nonce', 'nonce'); ?>
                 
-                <!-- Spam Honeypot (onzichtbaar veld voor bots) -->
                 <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off">
 
                 <div class="form-row">
