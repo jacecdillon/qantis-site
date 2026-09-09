@@ -4,14 +4,14 @@
 
 :root {
     --navy: #0D1B2E;
-    --navy-dark: #0d1b2e;
+    --navy-dark: #0D1B2E;
     --navy2: #14243B;
-    --navy3: #162d4a;
+    --navy3: #162D4A;
     --blue: #1782C4;
-    --blue-light: #3fa0d8;
+    --blue-light: #3FA0D8;
     --orange: #E86A2C;
     --green: #1A9E5C;
-    --white: #ffffff;
+    --white: #FFFFFF;
     --red: #C42B5B;
     --muted: rgba(255, 255, 255, 0.62);
     --border-subtle: rgba(255, 255, 255, 0.06);
@@ -81,8 +81,9 @@ main,
     height: 68px;
     display: flex;
     align-items: center;
-    font-family: var(--font-primary);
 }
+
+
 
 .header-container {
     width: 100%;
@@ -102,11 +103,6 @@ main,
 .main-navigation {
     display: flex;
     flex: 1;
-    font-family: var(--font-primary);
-}
-
-.main-navigation a {
-    font-family: var(--font-primary);
 }
 
 .main-navigation .nav-menu {
@@ -187,10 +183,6 @@ main,
     flex-shrink: 0;
 }
 
-.header-contact span {
-    font-family: var(--font-primary);
-}
-
 .header-contact .phone-link {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
@@ -222,31 +214,26 @@ main,
     background-color: var(--navy);
     background-image: 
         url("data:image/svg+xml,%3Csvg width='60' height='70' viewBox='0 0 60 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,2 58,17 58,53 30,68 2,53 2,17' fill='none' stroke='rgba(23,130,196,0.09)' stroke-width='1'/%3E%3C/svg%3E"),
-        linear-gradient(90deg, #11253e 0%, #11253e 30%, #0d1b2e 30%, #0d1b2e 100%);
+        linear-gradient(90deg, #11253e 0%, #11253e 30%, var(--navy-dark) 30%, var(--navy-dark) 100%);
     background-repeat: repeat, no-repeat;
     background-size: 60px 70px, auto;
     padding: 140px 48px 100px;
-}
-
-.hero-glow {
-    position: absolute;
-    top: 20%;
-    left: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(23, 130, 196, 0.15) 0%, rgba(13, 27, 46, 0) 70%);
-    pointer-events: none;
+    overflow: hidden;
 }
 
 .hero-container {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
     z-index: 1;
 }
 
 .hero-content {
-    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 800px;
 }
 
 .hero-subtitle {
@@ -321,7 +308,7 @@ main,
 
 
 /* ==========================================================================
-   5. PROPOSITIE TEASER SECTIE (Bovenste rij direct onder Hero)
+   5. PROPOSITIE TEASER SECTIE
    ========================================================================== */
 
 .prop-teaser-section {
@@ -378,9 +365,17 @@ main,
     font-size: 22px;
     font-weight: 800;
     color: var(--white);
-    margin: 0 0 12px;
+    margin: 0 0 16px;
     line-height: 1.2;
+    position: relative;
+    padding-bottom: 10px;
 }
+
+
+
+.prop-teaser-card.border-blue .prop-teaser-title::after   { background-color: var(--blue); }
+.prop-teaser-card.border-orange .prop-teaser-title::after { background-color: var(--orange); }
+.prop-teaser-card.border-green .prop-teaser-title::after  { background-color: var(--green); }
 
 .prop-teaser-description {
     font-size: 14.5px;
@@ -422,7 +417,7 @@ main,
 }
 
 .prop-teaser-card:hover .prop-teaser-link .arrow {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
 .prop-teaser-link.link-blue   { color: var(--blue); }
@@ -441,10 +436,10 @@ main,
 }
 
 .prop-section .inner {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 48px;
-    text-align: center;
+    text-align: left;
 }
 
 .section-tag {
@@ -459,11 +454,11 @@ main,
 
 .section-title {
     display: block;
-    font-size: 42px;
+    font-size: 41px;
     font-weight: 800;
     color: var(--white);
     margin-bottom: 16px;
-    letter-spacing: -0.5px;
+    letter-spacing: -2.5px;
     line-height: 1.2;
 }
 
@@ -473,12 +468,9 @@ main,
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 56px;
     line-height: 1.6;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 540px;
 }
 
-/* Grid & Cards */
 .prop-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -487,18 +479,19 @@ main,
 }
 
 .prop-card {
-    background-color: #0b1727;
+    background-color: var(--navy);
     border-radius: 12px;
     padding: 36px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    transition: background-color 0.2s ease;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .prop-card:hover {
-    background-color: rgba(255, 255, 255, 0.02);
+    transform: translateY(6px); 
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .prop-card.border-blue   { border-top: 3px solid var(--blue); }
@@ -541,7 +534,6 @@ main,
     margin-bottom: 32px;
 }
 
-/* Card Bullets & Links */
 .prop-bullets-container {
     flex-grow: 1;
     margin-bottom: 24px;
@@ -635,7 +627,8 @@ main,
     margin-bottom: 24px;
 }
 
-.contact-details p {
+.contact-details p,
+.address-details p {
     font-size: 15px;
     color: var(--white);
     margin-bottom: 6px;
@@ -655,13 +648,6 @@ main,
     color: rgba(255, 255, 255, 0.7);
 }
 
-.address-details p {
-    font-size: 15px;
-    color: var(--white);
-    margin-bottom: 6px;
-}
-
-/* Footer Map */
 .footer-map {
     width: 100%;
     max-width: 470px;
@@ -753,7 +739,7 @@ main,
 .footer-bottom {
     padding: 24px 48px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    background-color: #112240;
+    background-color: var(--navy3);
 }
 
 .footer-bottom-container {
