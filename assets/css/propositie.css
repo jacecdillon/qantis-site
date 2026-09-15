@@ -1,18 +1,36 @@
 /* ==========================================================================
-   Volledige Propositie Theme Styles
+   1. CSS Custom Properties & Base Styles
    ========================================================================== */
 
 :root {
     --bg-dark: #071327;
     --bg-card: #0c1e3a;
     --bg-card-hover: #10264a;
-    --accent-blue: #0084ff;
+    --accent-blue: #1d82ca;
+    --accent-orange: #ff6b00;
+    --accent-green: #10b981;
     --text-white: #ffffff;
     --text-muted: #8899ac;
+    --navy: #0D1B2E;
+    --navy-dark: #0D1B2E;
+    --navy2: #14243B;
+    --navy3: #162D4A;
     --border-light: rgba(255, 255, 255, 0.08);
+    --border-nav: rgba(255, 255, 255, 0.1);
+    
+    --accent: var(--accent-blue);
 }
 
-body, .propositie-page {
+.propositie-page.theme-blue   { --accent: var(--accent-blue); }
+.propositie-page.theme-orange { --accent: var(--accent-orange); }
+.propositie-page.theme-green  { --accent: var(--accent-green); }
+
+.propositie-page.theme-blue, .diensten-grid-section.theme-blue { --accent: var(--accent-blue); }
+.propositie-page.theme-orange, .diensten-grid-section.theme-orange { --accent: var(--accent-orange); }
+.propositie-page.theme-green, .diensten-grid-section.theme-green { --accent: var(--accent-green); }
+
+body, 
+.propositie-page {
     background-color: var(--bg-dark);
     color: var(--text-white);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -25,8 +43,14 @@ body, .propositie-page {
     padding: 0 24px;
 }
 
-.section-tag, .hero-tag {
-    color: var(--accent-blue);
+.hero-section .container {
+    max-width: 100%;
+    padding-left: 45px;
+}
+
+.section-tag, 
+.hero-tag {
+    color: var(--accent);
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -37,7 +61,9 @@ body, .propositie-page {
 
 .section-title {
     font-size: 2.2rem;
-    font-weight: 800;
+    font-weight: 700;
+    max-width: 400px;
+    letter-spacing: 0.26px;
     margin: 0 0 12px;
     color: var(--text-white);
 }
@@ -62,12 +88,12 @@ body, .propositie-page {
 }
 
 .btn-primary {
-    background-color: var(--accent-blue);
+    background-color: var(--accent);
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #0070da;
+    filter: brightness(0.9);
 }
 
 .btn-secondary {
@@ -80,7 +106,153 @@ body, .propositie-page {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* 1. Hero */
+/* ==========================================================================
+   2. Header & Top Navigatie (Glassmorphism Hover & Actieve Kleuren)
+   ========================================================================== */
+
+.site-header-propositie .header-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.site-header-propositie .propositie-navigation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(0);
+    margin: 0;
+}
+
+.site-header-propositie .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-header-propositie .nav-menu a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    transition: all 0.25s ease;
+}
+
+.site-header-propositie .nav-menu a:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="it-staffing"] {
+    color: var(--accent-blue);
+    border-color: rgba(0, 132, 255, 0.3);
+    background: rgba(0, 132, 255, 0.08);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="ot-civiel"] {
+    color: var(--accent-orange);
+    border-color: rgba(255, 107, 0, 0.3);
+    background: rgba(255, 107, 0, 0.08);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="qaas-mkb"] {
+    color: var(--accent-green);
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.08);
+}
+
+/* ==========================================================================
+   3. Subnavigatie Bar (Tabs)
+   ========================================================================== */
+
+.propositie-nav-bar {
+    background-color: #0c1b33;
+    border-top: 1px solid var(--border-nav);
+    border-bottom: 1px solid var(--border-nav);
+    width: 100%;
+}
+
+.propositie-nav-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.propositie-tab {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 32px 16px 48px;
+    width: 100%;
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-right: 1px solid var(--border-nav);
+    background-color: transparent;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.propositie-tab:last-child {
+    border-right: none;
+}
+
+.propositie-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+}
+
+.propositie-tab.tab-blue::after { background-color: var(--accent-blue); }
+.propositie-tab.tab-orange::after { background-color: var(--accent-orange); }
+.propositie-tab.tab-green::after { background-color: var(--accent-green); }
+
+.propositie-tab:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.propositie-tab.active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.dot-blue { background-color: var(--accent-blue); }
+.dot-orange { background-color: var(--accent-orange); }
+.dot-green { background-color: var(--accent-green); }
+
+.tab-label {
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   4. Page Sections (Hero, Diensten, Stappen, Extra, CTA)
+   ========================================================================== */
+
 .hero-section {
     padding: 80px 0;
 }
@@ -106,21 +278,29 @@ body, .propositie-page {
     margin-bottom: 32px;
 }
 
+.hero-text p {
+    font-size: 1.125rem;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
 .hero-buttons {
     display: flex;
     gap: 16px;
 }
 
-.hero-img, .stappen-img {
+.hero-img, 
+.stappen-img {
     width: 100%;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* 2. Diensten Grid */
 .diensten-grid-section {
     padding: 80px 0;
+    padding-bottom: 1px;
+    padding-top: 95px;
 }
 
 .grid-wrapper {
@@ -132,6 +312,7 @@ body, .propositie-page {
 .dienst-kaart {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
+    border-top: 4px solid var(--accent); /* Fallback */
     border-radius: 10px;
     padding: 32px;
     transition: transform 0.2s ease, border-color 0.2s ease;
@@ -139,8 +320,29 @@ body, .propositie-page {
 
 .dienst-kaart:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-blue);
+    border-color: var(--accent);
     background: var(--bg-card-hover);
+}
+
+.dienst-kaart.border-blue, 
+.dienst-kaart.Blauw, 
+.dienst-kaart[data-kleur*="blauw"], 
+.dienst-kaart[data-kleur*="Blue"] {
+    border-top: 4px solid var(--accent-blue) !important;
+}
+
+.dienst-kaart.border-orange, 
+.dienst-kaart.Oranje, 
+.dienst-kaart[data-kleur*="oranje"], 
+.dienst-kaart[data-kleur*="Orange"] {
+    border-top: 4px solid var(--accent-orange) !important;
+}
+
+.dienst-kaart.border-green, 
+.dienst-kaart.Groen, 
+.dienst-kaart[data-kleur*="groen"], 
+.dienst-kaart[data-kleur*="Green"] {
+    border-top: 4px solid var(--accent-green) !important;
 }
 
 .dienst-icoon {
@@ -162,9 +364,10 @@ body, .propositie-page {
     margin: 0;
 }
 
-/* 3. Stappen Plan */
 .stappen-section {
     padding: 80px 0;
+    padding-bottom: 80px 0;
+    
 }
 
 .stappen-container {
@@ -190,8 +393,8 @@ body, .propositie-page {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 2px solid var(--accent-blue);
-    color: var(--accent-blue);
+    border: 2px solid var(--accent);
+    color: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,9 +413,10 @@ body, .propositie-page {
     font-size: 0.9rem;
 }
 
-/* 4. Extra Grid */
 .extra-sectie {
-    padding: 80px 0;
+    padding-top: 95px;
+    padding-bottom :95px;
+    background-color: var(--navy-dark);
 }
 
 .extra-grid-wrapper {
@@ -223,7 +427,6 @@ body, .propositie-page {
 
 .extra-grid-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-light);
     border-radius: 8px;
     padding: 20px 24px;
     display: flex;
@@ -232,7 +435,7 @@ body, .propositie-page {
 }
 
 .bullet-dot {
-    color: var(--accent-blue);
+    color: var(--accent);
     font-size: 1.4rem;
 }
 
@@ -241,9 +444,9 @@ body, .propositie-page {
     font-size: 0.95rem;
 }
 
-/* 5. CTA Banner */
+/* CTA Banner */
 .cta-banner {
-    background-color: var(--accent-blue);
+    background-color: var(--accent);
     padding: 80px 0;
     text-align: center;
 }
@@ -263,7 +466,7 @@ body, .propositie-page {
 
 .btn-cta {
     background: #ffffff;
-    color: var(--accent-blue);
+    color: var(--accent);
     font-weight: 700;
 }
 
@@ -271,83 +474,153 @@ body, .propositie-page {
     background: #f0f0f0;
 }
 
-/* Responsive */
+/* ==========================================================================
+   5. Responsive Styles
+   ========================================================================== */
+
 @media (max-width: 992px) {
-    .hero-container, .stappen-container { grid-template-columns: 1fr; }
-    .grid-wrapper { grid-template-columns: repeat(2, 1fr); }
+    .hero-container, 
+    .stappen-container { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .grid-wrapper { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 900px) {
+    .propositie-nav-container {
+        flex-direction: column;
+    }
+    
+    .propositie-tab {
+        border-right: none;
+        border-bottom: 1px solid var(--border-nav);
+        padding-left: 24px;
+    }
 }
 
 @media (max-width: 600px) {
-    .grid-wrapper, .extra-grid-wrapper { grid-template-columns: 1fr; }
-    .hero-title { font-size: 2.5rem; }
+    .grid-wrapper, 
+    .extra-grid-wrapper { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .hero-title { 
+        font-size: 2.5rem; 
+    }
 }
 
-/* ==========================================================================
-   Propositie Subnavigatie Bar
-   ========================================================================== */
+/* ==========================================
+   SPLIT SECTIE (Afbeelding + Kaarten Grid)
+   ========================================== */
 
-.propositie-nav-bar {
-    background-color: #09172e;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    width: 100%;
+.split-sectie {
+    padding: 80px 0;
 }
 
-.propositie-nav-container {
+.split-sectie .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.split-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 100% !important;
-    padding: 0 !important;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
 }
 
-.propositie-tab {
+.split-image-col .content-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.split-content-col .section-header {
+    margin-bottom: 24px;
+}
+
+.split-content-col .section-tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.split-content-col .section-title {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.split-content-col .section-subtext {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.split-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.split-grid-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 18px 20px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
-    padding: 18px 32px;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
+    transition: border-color 0.2s ease;
+}
+
+.split-grid-item:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.split-grid-item .bullet-dot {
+    color: var(--accent);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.split-grid-item .item-titel {
+    color: #fff;
     font-size: 0.95rem;
     font-weight: 600;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    background-color: transparent;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    margin: 0;
+    line-height: 1.4;
 }
 
-.propositie-tab:last-child {
-    border-right: none;
+.split-grid-item .item-beschrijving {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
 }
 
-.propositie-tab:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-    color: #ffffff;
-}
-
-.propositie-tab.active {
-    background-color: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
-}
-
-.tab-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    flex-shrink: 0;
-}
-
-.tab-label {
-    letter-spacing: 0.3px;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .propositie-nav-container {
+@media (max-width: 968px) {
+    .split-wrapper {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
-    .propositie-tab {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 576px) {
+    .split-grid-wrapper {
+        grid-template-columns: 1fr;
     }
 }
 

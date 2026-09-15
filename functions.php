@@ -80,3 +80,17 @@ if ( function_exists('acf_add_options_page') ) {
         'redirect'   => false
     ));
 }
+
+function qantis_add_theme_body_class( $classes ) {
+    if ( is_page_template( 'page-propositie.php' ) ) {
+        $accent = get_field( 'accent_kleur' ); 
+        
+        if ( ! empty( $accent ) ) {
+            $classes[] = 'theme-' . sanitize_html_class( $accent );
+        } else {
+            $classes[] = 'theme-blue';
+        }
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'qantis_add_theme_body_class' );

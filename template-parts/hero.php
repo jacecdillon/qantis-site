@@ -1,15 +1,27 @@
 <?php
-$hero_tag         = get_field('hero_tag') ?: 'PROPOSITIE 01';
-$hero_titel       = get_field('hero_titel') ?: 'IT Staffing';
-$hero_tekst       = get_field('hero_tekst') ?: 'De juiste IT-professional op de juiste plek. Wij leveren gekwalificeerd IT-talent voor tijdelijke en vaste posities in Noord-Holland en heel Nederland.';
-$hero_btn_1_tekst = get_field('hero_button_1_tekst') ?: 'Neem contact op';
-$hero_btn_1_link  = get_field('hero_button_1_link') ?: '#contact';
-$hero_btn_2_tekst = get_field('hero_button_2_tekst') ?: 'Onze diensten';
-$hero_btn_2_link  = get_field('hero_button_2_link') ?: '#diensten';
-$hero_afbeelding  = get_field('hero_afbeelding');
+$page_id = get_queried_object_id();
+
+$hero_tag         = get_field('hero_tag', $page_id) ?: 'PROPOSITIE 01';
+$hero_titel       = get_field('hero_titel', $page_id) ?: 'IT Staffing';
+$hero_tekst       = get_field('hero_tekst', $page_id) ?: 'De juiste IT-professional op de juiste plek. Wij leveren gekwalificeerd IT-talent voor tijdelijke en vaste posities in Noord-Holland en heel Nederland.';
+$hero_btn_1_tekst = get_field('hero_button_1_tekst', $page_id) ?: 'Neem contact op';
+$hero_btn_1_link  = get_field('hero_button_1_link', $page_id) ?: '#contact';
+$hero_btn_2_tekst = get_field('hero_button_2_tekst', $page_id) ?: 'Onze diensten';
+$hero_btn_2_link  = get_field('hero_button_2_link', $page_id) ?: '#diensten';
+
+$hero_afbeelding  = get_field('hero_afbeelding', $page_id);
+$hero_bg_url      = '';
+
+if ( is_array($hero_afbeelding) && ! empty($hero_afbeelding['url']) ) {
+    $hero_bg_url = $hero_afbeelding['url'];
+} elseif ( is_string($hero_afbeelding) && ! empty($hero_afbeelding) ) {
+    $hero_bg_url = $hero_afbeelding;
+} elseif ( is_numeric($hero_afbeelding) ) {
+    $hero_bg_url = wp_get_attachment_image_url($hero_afbeelding, 'full');
+}
 ?>
 
-<section class="hero-section">
+<section class="hero-section"<?php if ( $hero_bg_url ) : ?> style="--hero-bg: url('<?php echo esc_url( $hero_bg_url ); ?>');"<?php endif; ?>>
     <div class="container hero-container">
         <div class="hero-content">
             <?php if ( $hero_tag ) : ?>
@@ -21,7 +33,7 @@ $hero_afbeelding  = get_field('hero_afbeelding');
             <?php endif; ?>
 
             <?php if ( $hero_tekst ) : ?>
-                <p class="hero-text"><?php echo esc_html($hero_tekst); ?></p>
+                <p class="hero-text"><?php echo nl2br(esc_html($hero_tekst)); ?></p>
             <?php endif; ?>
 
             <div class="hero-buttons">
@@ -37,14 +49,6 @@ $hero_afbeelding  = get_field('hero_afbeelding');
                     </a>
                 <?php endif; ?>
             </div>
-        </div>
-
-        <div class="hero-image-wrapper">
-            <?php if ( ! empty($hero_afbeelding['url']) ) : ?>
-                <img src="<?php echo esc_url($hero_afbeelding['url']); ?>" alt="<?php echo esc_attr($hero_afbeelding['alt']); ?>" class="hero-img">
-            <?php else : ?>
-                <img src="" alt="Hero team" class="hero-img">
-            <?php endif; ?>
         </div>
     </div>
 </section>

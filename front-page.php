@@ -44,7 +44,6 @@ get_header();
                 if ( have_rows('proposities', $page_id) ) : $i = 1; 
                     while ( have_rows('proposities', $page_id) ) : the_row();
 
-                        // Haal de kleur op en maak deze altijd lowercase (bijv. 'blue', 'orange', 'green')
                         $accent_raw          = get_sub_field('kleur_accent');
                         $accent_color        = ! empty($accent_raw) ? strtolower(trim($accent_raw)) : 'blue';
                         
@@ -159,6 +158,8 @@ get_header();
     <?php get_template_part('template-parts/cta-banner'); ?>
 
 </main>
+
+<?php get_template_part('template-parts/contact-section'); ?>
 
 <?php 
 get_footer();

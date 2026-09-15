@@ -1,8 +1,9 @@
 <?php
-$stappen_tag   = get_field('stappen_tag') ?: 'ONZE AANPAK';
-$stappen_titel = get_field('stappen_titel') ?: 'Snel de juiste match';
-$stappen_sub   = get_field('stappen_subtitel') ?: 'Open, eerlijk en transparant — van eerste gesprek tot succesvolle plaatsing.';
-$stappen_foto  = get_field('stappen_afbeelding');
+$stappen_tag         = get_field('stappen_tag');
+$stappen_titel       = get_field('stappen_titel');
+$stappen_sub         = get_field('stappen_subtitel');
+$stappen_footer_tekst = get_field('stappen_footer_tekst');
+$stappen_foto        = get_field('stappen_afbeelding');
 ?>
 
 <section class="stappen-section">
@@ -20,6 +21,10 @@ $stappen_foto  = get_field('stappen_afbeelding');
                 <p class="section-subtext"><?php echo esc_html($stappen_sub); ?></p>
             <?php endif; ?>
 
+            <?php if ( $stappen_footer_tekst ) : ?>
+                <p class="stappen-footer-text"><?php echo esc_html($stappen_footer_tekst); ?></p>
+            <?php endif; ?>
+
             <?php if ( have_rows('stappen_lijst') ) : ?>
                 <div class="stappen-lijst">
                     <?php $i = 1; while ( have_rows('stappen_lijst') ) : the_row(); ?>
@@ -35,12 +40,10 @@ $stappen_foto  = get_field('stappen_afbeelding');
             <?php endif; ?>
         </div>
 
-        <div class="stappen-image-wrapper">
-            <?php if ( ! empty($stappen_foto['url']) ) : ?>
+        <?php if ( ! empty($stappen_foto['url']) ) : ?>
+            <div class="stappen-image-wrapper">
                 <img src="<?php echo esc_url($stappen_foto['url']); ?>" alt="<?php echo esc_attr($stappen_foto['alt']); ?>" class="stappen-img">
-            <?php else : ?>
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80" alt="High five team" class="stappen-img">
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
