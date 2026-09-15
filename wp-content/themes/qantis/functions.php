@@ -19,3 +19,13 @@ function qantis_menus()
     );
 }
 add_action('after_setup_theme', 'qantis_menus');
+
+function qantis_allow_svg($mimes)
+{
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+
+add_filter('upload_mimes', 'qantis_allow_svg');
+
+?>
