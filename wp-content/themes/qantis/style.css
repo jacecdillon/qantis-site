@@ -19,6 +19,8 @@
     --navy: #0d1b2e;
     --navy2: #112240;
     --navy3: #162d4a;
+    --accent: #1ca05b;
+    --accent-dark: #087f45;
     --accent-dim: rgba(23, 130, 196, 0.12);
     --white: #ffffff;
     --muted: rgba(255, 255, 255, 0.6);
@@ -37,6 +39,7 @@ a {
     color: inherit;
 }
 
+
 /* Header & Menu */
 .site-header {
     height: 68px;
@@ -45,6 +48,32 @@ a {
     align-items: center;
     background: var(--navy);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+}
+.menu-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.phone {
+    margin-left: 0;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.brand-logo svg {
+    display: block;
+    width: 180px;
+    height: 40px;
+}
+.svg1{
+    fill: var(--accent);
+    stroke: var(--accent);
 }
 
 .main_menu {
@@ -108,12 +137,20 @@ a {
     display: flex;
     align-items: flex-end;
     overflow: hidden;
+    background-color: var(--navy2);
+}
+.hero::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 100%;
     background-image: var(--hero-image);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    z-index: 1;
 }
-
 .hero::before {
     content: "";
     position: absolute;
@@ -121,19 +158,20 @@ a {
     background:
         linear-gradient(to right,
             var(--navy2) 0%,
-            rgba(17, 34, 64, 0.5) 30%,
-            transparent 60%),
+            var(--navy2) 35%,
+            rgba(17, 34, 64, 0.8) 55%,
+            transparent 80%),
         linear-gradient(to top,
             var(--navy2) 0%,
             transparent 35%);
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 80px 48px 60px;
-    max-width: 620px;
+    max-width: 720px;
 }
 
 .hero-tag {
@@ -241,8 +279,8 @@ a {
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    background: var(--accent-dim);
     border-radius: 10px;
+    background-color: var(--accent-dark);
 }
 
 .dienst-icon img {
@@ -303,11 +341,12 @@ a {
 .s-sub {
     grid-area: sub;
     color: #94a3b8;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
     margin: 0 0 40px 0;
-    max-width: 380px;
+    max-width: 550px;
 }
+
 
 .hoe-img {
     grid-area: img;
@@ -354,17 +393,18 @@ a {
     font-size: 14px;
     font-weight: bold;
     margin-top: 3px;
+    background-color: var(--accent-dark);
 }
 
 .step-body h4 {
-    margin: 0 0 8px 0;
+    margin:0;
     font-size: 16px;
     color: var(--white);
     font-weight: 700;
 }
 
 .step-body p {
-    margin: 0;
+    margin-bottom: 8px;
     color: #94a3b8;
     font-size: 14px;
     line-height: 1.6;
@@ -398,6 +438,36 @@ a {
     transition: transform 0.15s;
 }
 
+.waarom{
+    background-color: var(--navy2);
+    padding: 20px;
+}
+.waar-inner{
+    margin:80px auto;
+    max-width: 1040px;
+}
+.waar-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+}
+.waar-art{
+    min-height: 180px;
+    padding: 30px 32px 28px;
+    background-color: var(--navy);
+    border-radius: 8px;
+}
+.waar-number{
+    color:var(--accent);
+    font-weight: 1000;
+}
+.field-lab {
+    margin: 0 0 12px;
+    color: var(--white);
+    font-size: 17px;
+    line-height: 1.15;
+}
 /* Expertise Section */
 .expertise {
     background: var(--navy2);
@@ -487,7 +557,157 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 .left img{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: 10px;
+    display: block;
+}
+.voordelen-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: center;
+}
+.voordel-item {
+    background: var(--navy2);
+    padding: 20px;
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: 8px;
+}
+.voordel-item span {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+
+
+.qaas{
+    margin: 80px auto;
+    max-width: 1040px;
+}
+
+.tarieven-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.tarieven {
+    min-height: 280px;
+    padding: 30px 32px 28px;
+    background: var(--navy2);
+    border-top: 3px solid var(--accent);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarieven-badge {
+    align-self: flex-start;
+    margin: 0 0 14px;
+    padding: 6px 13px;
+    background: rgba(28, 160, 91, 0.16);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 1.2px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.field-label {
+    margin: 0 0 12px;
+    color: var(--white);
+    font-size: 19px;
+    line-height: 1.15;
+}
+
+.tarieven-tekst {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.tarieven-prijs {
+    margin: auto 0 0;
+    padding-top: 22px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+@media (max-width: 992px) {
+    .tarieven-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .tarievenblok {
+        padding: 20px 20px 56px;
+    }
+
+    .tarieven-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cta {
+    margin: 56px auto;
+    padding: 32px 36px 28px;
+    background: var(--accent);
+    border-radius: 10px;
+}
+.cta .s-titel {
+    color: var(--white);
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+}
+.cta .s-sub {
+    max-width: none;
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 26px;
+}
+.cta a {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--white);
+    color: var(--accent-dark);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cta a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+@media (max-width: 600px) {
+    .cta {
+        margin: 40px 20px;
+        padding: 26px 22px 24px;
+    }
+}
+
+
+.page-id-204 .section-stappen{
+    background-color: var(--navy);
 }

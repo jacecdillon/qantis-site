@@ -1,17 +1,19 @@
 <?php
 $toon_extra_sectie = get_field('toon_extra_sectie');
+
 $extra_tekst = get_field('extra_tekst');
 $expertise = get_field('expertise');
 $toepassingsgebieden = get_field('toepassingsgebieden');
 $voordelen_tekst = get_field('voordelen_tekst');
 $voordelenlijst = get_field('voordelen');
-$tarievenblok = get_field('tarievenblok');
 $quick_call = get_field('quick_call');
 ?>
 
 <?php if ($toon_extra_sectie) { ?>
-
     <section>
+
+        
+
         <?php if ($expertise) { ?>
             <section class="expertise">
                 <div class="exp-inner">
@@ -53,45 +55,31 @@ $quick_call = get_field('quick_call');
             </section>
         <?php } ?>
 
-        <?php if ($voordelenlijst) { ?>
+        <?php if ($voordelenlijst && $voordelen_tekst) { ?>
             <section class="voordelen">
                 <div class="voor-inner">
                     <div class="left">
                         <img src="<?php echo esc_url($voordelen_tekst['afbeelding']['url']); ?>" alt="">
                     </div>
+
                     <div class="right">
                         <p class="s-tag"><?php echo $voordelen_tekst['tag'] ?></p>
                         <h3 class="s-titel"><?php echo $voordelen_tekst['titel'] ?></h3>
                         <p class="s-sub"><?php echo $voordelen_tekst['subtekst'] ?></p>
-                        <?php foreach ($voordelenlijst as $item) { ?>
-                            <div class='voordelen-grid'>
-                                <h3><?php echo $item['label']; ?></h3>
-                            </div>
-                        <?php } ?>
+
+                        <div class='voordelen-grid'>
+                            <?php foreach ($voordelenlijst as $item) { ?>
+                                <div class="voordel-item">
+                                    <span></span>
+                                    <h4><?php echo $item['label']; ?></h4>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </section>
         <?php } ?>
 
-        <?php if ($tarievenblok) { ?>
-            <?php foreach ($tarievenblok as $item) { ?>
-                <div class='tarieven'>
-                    <p>
-                        <?php echo $item['badge']; ?>
-                    </p>
-                    <h2>
-                        <?php echo $item['titel']; ?>
-                    </h2>
-                    <p>
-                        <?php echo $item['tekst']; ?>
-                    </p>
-                    <p>
-                        <?php echo $item['prijsvermelding']; ?>
-                    </p>
-                </div>
-            <?php } ?>
-
-        <?php } ?>
         <?php if ($quick_call) { ?>
             <section class="quick-call">
                 <h2>
@@ -105,6 +93,5 @@ $quick_call = get_field('quick_call');
                 </a>
             </section>
         <?php } ?>
-    <?php } ?>
-</section>
-<?php get_template_part('template-parts/cta'); ?>
+    </section>
+<?php } ?>
