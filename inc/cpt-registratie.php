@@ -2,28 +2,6 @@
 
 function qantis_register_custom_post_types() {
 
-    $tax_labels = array(
-        'name'              => 'Proposities',
-        'singular_name'     => 'Propositie',
-        'search_items'      => 'Zoek Proposities',
-        'all_items'         => 'Alle Proposities',
-        'edit_item'         => 'Bewerk Propositie',
-        'update_item'       => 'Update Propositie',
-        'add_new_item'      => 'Voeg Nieuwe Propositie Toe',
-        'new_item_name'     => 'Nieuwe Propositie Naam',
-        'menu_name'         => 'Proposities',
-    );
-
-    register_taxonomy('propositie', array('opdracht'), array(
-        'hierarchical'      => true,
-        'labels'            => $tax_labels,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'propositie'),
-        'show_in_rest'      => true,
-    ));
-
     $opdracht_labels = array(
         'name'               => 'Opdrachten',
         'singular_name'      => 'Opdracht',
@@ -39,13 +17,35 @@ function qantis_register_custom_post_types() {
         'labels'             => $opdracht_labels,
         'public'             => true,
         'has_archive'        => true,
-        'rewrite'            => array('slug' => 'opdrachten'),
+        'rewrite'            => array('slug' => 'opdrachten', 'with_front' => false),
         'menu_icon'          => 'dashicons-portfolio',
         'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
         'show_in_rest'       => true,
     );
 
-    register_post_type('opdracht', $opdracht_args);
+    register_post_type('opdrachten', $opdracht_args);
+
+    $tax_labels = array(
+        'name'              => 'Proposities',
+        'singular_name'     => 'Propositie',
+        'search_items'      => 'Zoek Proposities',
+        'all_items'         => 'Alle Proposities',
+        'edit_item'         => 'Bewerk Propositie',
+        'update_item'       => 'Update Propositie',
+        'add_new_item'      => 'Voeg Nieuwe Propositie Toe',
+        'new_item_name'     => 'Nieuwe Propositie Naam',
+        'menu_name'         => 'Proposities',
+    );
+
+    register_taxonomy('propositie', array('opdrachten'), array(
+        'hierarchical'      => true,
+        'labels'            => $tax_labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'propositie'),
+        'show_in_rest'      => true,
+    ));
 
     $vacature_labels = array(
         'name'               => 'Vacatures',
@@ -62,12 +62,12 @@ function qantis_register_custom_post_types() {
         'labels'             => $vacature_labels,
         'public'             => true,
         'has_archive'        => true,
-        'rewrite'            => array('slug' => 'vacatures'),
+        'rewrite'            => array('slug' => 'vacatures', 'with_front' => false),
         'menu_icon'          => 'dashicons-id',
         'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
         'show_in_rest'       => true,
     );
 
-    register_post_type('vacature', $vacature_args);
+    register_post_type('vacatures', $vacature_args);
 }
 add_action('init', 'qantis_register_custom_post_types');

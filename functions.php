@@ -26,7 +26,6 @@ function qantis_enqueue_assets() {
         );
     }
 
-    // Specifieke CSS-bestanden inladen op basis van de geopende pagina
     if ( is_front_page() ) {
         $front_styles = array('thuisbasis', 'over-qantis', 'opdrachten', 'cta-banner');
         foreach ( $front_styles as $style ) {
