@@ -1,12 +1,15 @@
 <?php
+$propositie_page = get_page_by_path('propositie');
+$excluded_ids = $propositie_page ? array($propositie_page->ID) : array();
+
 $proposities = new WP_Query(array(
     'post_type' => 'page',
-    'posts_per_page' => -1,
+    'posts_per_page' => 3,
     'meta_key' => '_wp_page_template',
     'meta_value' => 'page-propositie.php',
-    'post__not_in' => array(get_page_by_path('propositie')->ID),
+    'post__not_in' => $excluded_ids,
     'orderby' => 'menu_order',
-    'order' => 'ASC',
+    'order' => 'DESC',
 ));
 ?>
 

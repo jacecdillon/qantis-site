@@ -1,19 +1,26 @@
+<?php 
+$phone = get_field('telefoonnummer', 'option');
+$accent_color = get_field('accentkleur');
+
+
+$selected_menu_id = get_field('menu_keuze') ?: 12; 
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?> style="
-    --accent: <?php echo esc_attr(get_field('accentkleur')); ?>;
-    --accent-dark: color-mix(in srgb, var(--accent),transparent, black 40% );
+    --accent: <?php echo esc_attr($accent_color); ?>;
+    --accent-dark: color-mix(in srgb, var(--accent), transparent, black 40%);
 ">
     <header class="site-header">
-        <a href="#" class="brand-logo">
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-logo">
             <svg viewBox="0 0 230 58" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0" y="1" width="50" height="50" rx="10" fill="#2d2d2d" />
                 <rect x="7" y="8" width="30" height="30" rx="4" fill="#0d1b2e" />
@@ -29,14 +36,13 @@
         </a>
         <div class="menu-left">
             <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'main-menu',
-                    'menu_class' => 'main_menu',
-                    /*'walker' => new Qantis_Walker()*/
-                )
-            );
+            wp_nav_menu([
+                'menu'        => (int) $selected_menu_id,
+                'menu_class'  => 'main_menu',
+                'fallback_cb' => false,
+            ]);
             ?>
         </div>
-        <p class="phone">📞 088 – 35 20 600</p>
+        <span class="emoji-phone">📞</span>
+        <p class="phone"><?php echo esc_html($phone); ?></p>
     </header>

@@ -27,6 +27,8 @@
     --r: 6px;
 }
 
+
+
 body {
     font-family: 'Inter', sans-serif;
     background: var(--navy);
@@ -58,7 +60,15 @@ a {
     display: flex;
     justify-content: center;
 }
+.menu-left .main_menu a{
+    font-weight: 600;
+}
+.menu-left .main_menu .current-menu-item > a {
+    color: var(--accent); 
+}
 .phone {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    font-variant-emoji: emoji;
     margin-left: 0;
     color: var(--white);
     font-size: 15px;
@@ -101,7 +111,31 @@ a {
     color: var(--white);
     background: rgba(255, 255, 255, 0.06);
 }
-
+.site-footer{
+    background-color: var(--navy2);
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;     
+    background-color: var(--navy2);
+    padding: 25px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+}
+.footer-tekst{
+    padding-left: 30px;
+}
+.footer-links{
+    display: flex;
+    gap: 15px;
+    padding-right: 30px;
+}
+.footer-links :hover{
+    color: white;
+    transition: 0.3s;
+}
 /* Sub-navigation */
 .propositie-nav {
     display: grid;
@@ -204,7 +238,7 @@ a {
     max-width: 480px;
     margin-bottom: 36px;
     color: var(--muted);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.75;
 }
 
@@ -306,6 +340,9 @@ a {
     background: var(--navy2);
     padding: 100px 5%;
 }
+.inner{
+    max-width: 1040px;
+}
 
 .hoe-grid {
     display: grid;
@@ -319,7 +356,6 @@ a {
     row-gap: 0;
     align-items: center;
 }
-
 .s-tag {
     grid-area: tag;
     color: var(--accent);
@@ -360,7 +396,6 @@ a {
 .hoe-img img {
     width: 100%;
     height: auto;
-    max-height: 500px;
     border-radius: 12px;
     object-fit: cover;
     display: block;
@@ -475,7 +510,7 @@ a {
 }
 
 .exp-inner {
-    max-width: 1200px;
+    max-width: 1040px;
     margin: 0 auto;
 }
 
@@ -533,9 +568,9 @@ a {
     padding: 100px 0;
 }
 .toepassing-inner{
-    max-width: 1370px;
     margin: 0 auto;
-    padding: 0 5%;
+    
+    max-width: 1040px;
 }
 .toepassing-grid{
     display: grid;
@@ -549,6 +584,16 @@ a {
     padding: 28px 32px;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
+.toepassing-card h3{
+    font-size: 16px;
+}
+.toepassing-sub {
+    grid-area: sub;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 550px;
+}
 .voordelen{
     padding: 80px 48px;
 }
@@ -557,7 +602,7 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
-    max-width: 1300px;
+    max-width: 1040px;
     margin: 0 auto;
 }
 .left img{
@@ -710,4 +755,22 @@ a {
 
 .page-id-204 .section-stappen{
     background-color: var(--navy);
+}
+
+.page-id-396 .propositie-nav{
+    display: none;
+}
+.page-id-396 .quick-call{
+    background-color: var(--navy2);
+}
+.page-id-396 .quick-call a{
+    background-color: var(--accent);
+    color: white;
+}
+.page-id-396 .quick-call p{
+    color: var(--muted);
+    font-size: 18px;
+}
+.page-id-396 .menu-left{
+    justify-content: left;
 }

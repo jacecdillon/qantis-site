@@ -14,20 +14,19 @@ $url = get_field('embed_url', 'option');
 ?>
 
 <footer class="site-footer">
-
-    <?php echo $phone; ?><br>
-    <?php echo $email; ?><br>
-    <?php echo $adresregels; ?><br>
-    <?php echo $opentime; ?><br>
-    <?php echo $social_links; ?><br>
-    <?php echo $copy_text; ?><br>
-    <?php echo $links; ?><br>
-    <?php echo $coord; ?><br>
-    <?php echo $url; ?><br>
-
+    <div class="footer">
+        <div class="footer-tekst">
+            <?php echo $copy_text; ?>
+            <?php echo $adresregels; ?>
+        </div>
+        <div class="footer-links">
+            <?php foreach ($links as $item) { ?>
+                <a href="<?php echo $item['link']['url'] ?>"><?php echo $item['link']['title'] ?></a>
+            <?php } ?>
+        </div>
+    </div>
 </footer>
 
 <?php wp_footer(); ?>
 
 </body>
-</html>

@@ -45,7 +45,7 @@ $quick_call = get_field('quick_call');
                                 <h3>
                                     <?php echo $item['titel']; ?>
                                 </h3>
-                                <p>
+                                <p class="toepassing-sub">
                                     <?php echo $item['tekst']; ?>
                                 </p>
                             </div>
@@ -92,6 +92,7 @@ $quick_call = get_field('quick_call');
                     <?php echo $quick_call['buttontekst'] ?>
                 </a>
             </section>
+            
         <?php } ?>
     </section>
 <?php } ?>

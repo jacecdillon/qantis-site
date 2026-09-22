@@ -14,7 +14,8 @@ function qantis_menus()
 {
     register_nav_menus(
         array(
-            'main-menu' => 'Hoofdmenu'
+            'main-menu' => 'Hoofdmenu',
+            'second-menu' => 'Propositie menu'
         )
     );
 }
