@@ -29,7 +29,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: yellow !important;
+    background: var(--accent);
     color: var(--white);
     line-height: 1.6;
 }
