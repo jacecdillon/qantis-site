@@ -27,11 +27,9 @@
     --r: 6px;
 }
 
-
-
 body {
     font-family: 'Inter', sans-serif;
-    background: var(--navy);
+    background: yellow !important;
     color: var(--white);
     line-height: 1.6;
 }
