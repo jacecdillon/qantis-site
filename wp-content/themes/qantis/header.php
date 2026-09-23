@@ -20,7 +20,7 @@ $selected_menu_id = get_field('menu_keuze') ?: 12;
     --accent-dark: color-mix(in srgb, var(--accent), transparent, black 40%);
 ">
     <header class="site-header">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="brand-logo">
+        <a href="#" class="brand-logo">
             <svg viewBox="0 0 230 58" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0" y="1" width="50" height="50" rx="10" fill="#2d2d2d" />
                 <rect x="7" y="8" width="30" height="30" rx="4" fill="#0d1b2e" />

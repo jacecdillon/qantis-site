@@ -774,3 +774,9 @@ a {
 .page-id-396 .menu-left{
     justify-content: left;
 }
+.page-id-396 .hero-tag:before {
+    display: none;
+}
+.page-id-396 h1{
+    font-size: 65px;
+}
