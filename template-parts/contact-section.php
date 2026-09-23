@@ -45,7 +45,6 @@
                         src="<?php echo esc_url($map_url); ?>" 
                         width="100%" 
                         height="180" 
-                        style="border:0; border-radius: 8px;" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
@@ -61,7 +60,7 @@
             <form id="qantis-contact-form" class="contact-form">
                 <?php wp_nonce_field('qantis_contact_nonce', 'nonce'); ?>
                 
-                <input type="text" name="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off">
+                <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
 
                 <div class="form-row">
                     <input type="text" name="naam" placeholder="Naam" required>
@@ -80,11 +79,11 @@
                 </div>
 
                 <div class="form-group">
-                    <textarea name="bericht" rows="5" placeholder="Bericht" required></textarea>
+                    <textarea name="bericht" rows="5" placeholder="Bericht" required maxlength="500"></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Verstuur</button>
-                <div id="form-response" style="display:none; margin-top:15px;"></div>
+                <div id="form-response"></div>
             </form>
         </div>
 
