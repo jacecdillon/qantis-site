@@ -389,8 +389,6 @@ body,
 
 .dienst-kaart:hover {
     transform: translateY(-4px);
-    border-color: var(--accent);
-    background: var(--bg-card-hover);
 }
 
 .dienst-kaart.border-blue, 

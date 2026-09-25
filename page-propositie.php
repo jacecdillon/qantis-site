@@ -12,20 +12,23 @@ $accent_kleur = get_field('accent_kleur') ?: '#1582CA';
 
     <?php
     get_template_part( 'template-parts/hero' );
-    get_template_part( 'template-parts/diensten-grid' ); // Diensten sectie
-    get_template_part( 'template-parts/dienstmodel' ); // Dienstmodel sectie
+    get_template_part( 'template-parts/diensten-grid' );
+    get_template_part( 'template-parts/dienstmodel' );
 
     if ( is_page( 'ot-civiel-industrie' ) ) :
-        get_template_part( 'template-parts/extra-sectie' ); // Toepassingsgebieden
-        get_template_part( 'template-parts/usp' );          // Waarom Qantis OT
+        get_template_part( 'template-parts/extra-sectie' );
+        get_template_part( 'template-parts/usp' );
+    elseif ( is_page( 'it-staffing' ) ) :
+        get_template_part( 'template-parts/extra-sectie' );
+        get_template_part( 'template-parts/usp' );
     else :
-        get_template_part( 'template-parts/usp' ); // USP sectie
-        get_template_part( 'template-parts/extra-sectie' ); // Overige sectie
+        get_template_part( 'template-parts/usp' );
+        get_template_part( 'template-parts/extra-sectie' );
     endif;
 
     get_template_part( 'template-parts/split-sectie' );
-    get_template_part( 'template-parts/stappen' ); // Stappen sectie
-    get_template_part('template-parts/cta-banner'); // Call to action banner
+    get_template_part( 'template-parts/stappen' );
+    get_template_part('template-parts/cta-banner');
     ?>
 
 </main>
