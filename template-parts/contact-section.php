@@ -59,8 +59,11 @@
             
             <form id="qantis-contact-form" class="contact-form">
                 <?php wp_nonce_field('qantis_contact_nonce', 'nonce'); ?>
-                
-                <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
+
+                <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                    <label for="website_hp">Laat dit veld leeg</label>
+                    <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+                </div>
 
                 <div class="form-row">
                     <input type="text" name="naam" placeholder="Naam" required>

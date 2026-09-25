@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<?php
+$theme_class = '';
+if (is_page('it-staffing')) {
+    $theme_class = 'theme-blue propositie-page';
+} elseif (is_page('ot-civiel-industrie')) {
+    $theme_class = 'theme-orange propositie-page';
+} elseif (is_page('qaas-mkb')) {
+    $theme_class = 'theme-green propositie-page';
+}
+?>
+<body <?php body_class( $theme_class ); ?>>
 <?php wp_body_open(); ?>
 
 <header class="site-header site-header-propositie">
@@ -18,10 +28,10 @@
                     <rect x="7" y="8" width="30" height="30" rx="4" fill="#0d1b2e"></rect>
                     <rect x="26" y="30" width="24" height="21" fill="#0d1b2e"></rect>
                     <rect x="39" y="30" width="11" height="9" fill="#2d2d2d"></rect>
-                    <polygon points="34,38 41,38 48,50 41,50" fill="#1782C4"></polygon>
+                    <polygon points="34,38 41,38 48,50 41,50" fill="var(--accent)"></polygon>
                     <text x="60" y="43" font-family="'Arial Rounded MT Bold','Arial Black',Arial,sans-serif" font-size="38" font-weight="900" fill="#d8d8d8" letter-spacing="-1">antis</text>
-                    <line x1="60" y1="50" x2="152" y2="50" stroke="#1782C4" stroke-width="1.2"></line>
-                    <text x="153" y="56" font-family="Arial,sans-serif" font-size="7.5" fill="#1782C4" text-anchor="end" font-style="italic">makes IT easy</text>
+                    <line x1="60" y1="50" x2="152" y2="50" stroke="var(--accent)" stroke-width="1.2"></line>
+                    <text x="153" y="56" font-family="Arial,sans-serif" font-size="7.5" fill="var(--accent)" text-anchor="end" font-style="italic">makes IT easy</text>
                 </svg>
             </a>
         </div>
@@ -48,19 +58,31 @@
                 <span>088 &ndash; 35 20 600</span>
             </a>
         </div>
+    </div>
 </header>
 
-<div class="propositie-nav-bar">
+<?php
+$nav_theme_class = '';
+if (is_page('it-staffing')) {
+    $nav_theme_class = 'theme-blue';
+} elseif (is_page('ot-civiel-industrie')) {
+    $nav_theme_class = 'theme-orange';
+} elseif (is_page('qaas-mkb')) {
+    $nav_theme_class = 'theme-green';
+}
+?>
+
+<div class="propositie-nav-bar <?php echo $nav_theme_class; ?>">
     <div class="propositie-nav-container">
-        <a href="<?php echo esc_url( home_url( '/it-staffing/' ) ); ?>" class="propositie-tab tab-blue <?php echo is_page('it-staffing') ? 'is-active' : ''; ?>">
+        <a href="<?php echo esc_url( home_url( '/it-staffing/' ) ); ?>" class="propositie-tab <?php echo is_page('it-staffing') ? 'is-active' : ''; ?>">
             <span class="tab-dot dot-blue"></span>
             <span class="tab-label">01 - IT Staffing</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/ot-civiel-industrie/' ) ); ?>" class="propositie-tab tab-orange <?php echo is_page('ot-civiel-industrie') ? 'is-active' : ''; ?>">
+        <a href="<?php echo esc_url( home_url( '/ot-civiel-industrie/' ) ); ?>" class="propositie-tab <?php echo is_page('ot-civiel-industrie') ? 'is-active' : ''; ?>">
             <span class="tab-dot dot-orange"></span>
             <span class="tab-label">02 - OT Civiel/Industrie</span>
         </a>
-        <a href="<?php echo esc_url( home_url( '/qaas-mkb/' ) ); ?>" class="propositie-tab tab-green <?php echo is_page('qaas-mkb') ? 'is-active' : ''; ?>">
+        <a href="<?php echo esc_url( home_url( '/qaas-mkb/' ) ); ?>" class="propositie-tab <?php echo is_page('qaas-mkb') ? 'is-active' : ''; ?>">
             <span class="tab-dot dot-green"></span>
             <span class="tab-label">03 - QAAS MKB</span>
         </a>

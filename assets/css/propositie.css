@@ -21,10 +21,6 @@
     --accent: var(--accent-blue);
 }
 
-.propositie-page.theme-blue   { --accent: var(--accent-blue); }
-.propositie-page.theme-orange { --accent: var(--accent-orange); }
-.propositie-page.theme-green  { --accent: var(--accent-green); }
-
 .propositie-page.theme-blue, .diensten-grid-section.theme-blue { --accent: var(--accent-blue); }
 .propositie-page.theme-orange, .diensten-grid-section.theme-orange { --accent: var(--accent-orange); }
 .propositie-page.theme-green, .diensten-grid-section.theme-green { --accent: var(--accent-green); }
@@ -62,7 +58,6 @@ body,
 .section-title {
     font-size: 2.2rem;
     font-weight: 700;
-    max-width: 400px;
     letter-spacing: 0.26px;
     margin: 0 0 12px;
     color: var(--text-white);
@@ -104,6 +99,8 @@ body,
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: var(--border-light);  
 }
 
 /* ==========================================================================
@@ -157,20 +154,14 @@ body,
 
 .site-header-propositie .nav-menu li.current-menu-item a[href*="it-staffing"] {
     color: var(--accent-blue);
-    border-color: rgba(0, 132, 255, 0.3);
-    background: rgba(0, 132, 255, 0.08);
 }
 
 .site-header-propositie .nav-menu li.current-menu-item a[href*="ot-civiel"] {
     color: var(--accent-orange);
-    border-color: rgba(255, 107, 0, 0.3);
-    background: rgba(255, 107, 0, 0.08);
 }
 
 .site-header-propositie .nav-menu li.current-menu-item a[href*="qaas-mkb"] {
     color: var(--accent-green);
-    border-color: rgba(16, 185, 129, 0.3);
-    background: rgba(16, 185, 129, 0.08);
 }
 
 /* ==========================================================================
@@ -180,8 +171,18 @@ body,
 .propositie-nav-bar {
     background-color: #0c1b33;
     border-top: 1px solid var(--border-nav);
-    border-bottom: 1px solid var(--border-nav);
     width: 100%;
+    position: relative;
+}
+
+.propositie-nav-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--accent);
 }
 
 .propositie-nav-container {
@@ -195,8 +196,8 @@ body,
 .propositie-tab {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 16px 32px 16px 48px;
+    gap: 12px;
+    padding: 22px 32px 22px 36px;
     width: 100%;
     color: var(--text-white);
     text-decoration: none;
@@ -212,24 +213,11 @@ body,
     border-right: none;
 }
 
-.propositie-tab::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-}
-
-.propositie-tab.tab-blue::after { background-color: var(--accent-blue); }
-.propositie-tab.tab-orange::after { background-color: var(--accent-orange); }
-.propositie-tab.tab-green::after { background-color: var(--accent-green); }
-
 .propositie-tab:hover {
     background-color: rgba(255, 255, 255, 0.04);
 }
 
-.propositie-tab.active {
+.propositie-tab.is-active {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -271,6 +259,42 @@ body,
     line-height: 1.1;
 }
 
+.dienstmodel-section .hero-subtitle, 
+.usp-grid-section .hero-subtitle {
+    color: var(--accent);
+}
+
+.dienstmodel-section .hero-subtitle {
+    color: var(--accent);
+}
+
+.quick-scan-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.dienstmodel-section {
+    padding-top: 0;
+    margin-top: -90px;
+}
+
+.quick-scan-action {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dienstmodel-section .badge {
+    background-color: rgba(28, 160, 91, 0.15);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+}
+
 .hero-text {
     color: var(--text-muted);
     font-size: 1.1rem;
@@ -301,6 +325,51 @@ body,
     padding: 80px 0;
     padding-bottom: 1px;
     padding-top: 95px;
+    padding-bottom: 70px
+}
+
+.dienst-icoon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 20px;
+    color: var(--accent);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+
+.dienst-icoon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+}
+
+.dienst-icoon-img {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+
+.dienst-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
 }
 
 .grid-wrapper {
@@ -312,7 +381,7 @@ body,
 .dienst-kaart {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
-    border-top: 4px solid var(--accent); /* Fallback */
+    border-top: 4px solid var(--accent);
     border-radius: 10px;
     padding: 32px;
     transition: transform 0.2s ease, border-color 0.2s ease;
@@ -345,12 +414,6 @@ body,
     border-top: 4px solid var(--accent-green) !important;
 }
 
-.dienst-icoon {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 20px;
-}
-
 .dienst-titel {
     font-size: 1.2rem;
     font-weight: 700;
@@ -366,8 +429,18 @@ body,
 
 .stappen-section {
     padding: 80px 0;
-    padding-bottom: 80px 0;
-    
+}
+
+.stappen-section .stap-nummer {
+    background-color: rgba(28, 160, 91, 0.15);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
 }
 
 .stappen-container {
@@ -415,8 +488,7 @@ body,
 
 .extra-sectie {
     padding-top: 95px;
-    padding-bottom :95px;
-    background-color: var(--navy-dark);
+    padding-bottom: 95px;
 }
 
 .extra-grid-wrapper {
@@ -434,6 +506,25 @@ body,
     gap: 12px;
 }
 
+.extra-grid-card.border-blue   { border-top: 4px solid var(--accent-blue); }
+.extra-grid-card.border-orange { border-top: 4px solid var(--accent-orange); }
+.extra-grid-card.border-green  { border-top: 4px solid var(--accent-green); }
+
+body.theme-orange .extra-grid-card.border-blue {
+    border-top: none;
+    border-left: 4px solid var(--accent-blue);
+}
+
+body.theme-orange .extra-grid-card.border-orange {
+    border-top: none;
+    border-left: 4px solid var(--accent-orange);
+}
+
+body.theme-orange .extra-grid-card.border-green {
+    border-top: none;
+    border-left: 4px solid var(--accent-green);
+}
+
 .bullet-dot {
     color: var(--accent);
     font-size: 1.4rem;
@@ -444,7 +535,6 @@ body,
     font-size: 0.95rem;
 }
 
-/* CTA Banner */
 .cta-banner {
     background-color: var(--accent);
     padding: 80px 0;
@@ -472,6 +562,14 @@ body,
 
 .btn-cta:hover {
     background: #f0f0f0;
+}
+
+body.theme-orange .extra-card-titel::before {
+    display: none;
+}
+
+body.theme-orange .extra-sectie {
+    background-color: var(--bg-card);
 }
 
 /* ==========================================================================
@@ -623,4 +721,3 @@ body,
         grid-template-columns: 1fr;
     }
 }
-

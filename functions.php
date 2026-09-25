@@ -61,8 +61,18 @@ function qantis_enqueue_assets() {
             filemtime(get_template_directory() . '/assets/js/main.js'),
             true
         );
+    }
 
-        wp_localize_script('qantis-js', 'qantis_ajax', array(
+    if ( file_exists( get_template_directory() . '/assets/js/contact.js' ) ) {
+        wp_enqueue_script(
+            'qantis-contact',
+            get_template_directory_uri() . '/assets/js/contact.js',
+            array(),
+            filemtime(get_template_directory() . '/assets/js/contact.js'),
+            true
+        );
+
+        wp_localize_script('qantis-contact', 'qantis_ajax', array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('qantis_contact_nonce')
         ));

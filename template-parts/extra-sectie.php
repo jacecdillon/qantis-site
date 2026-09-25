@@ -30,7 +30,7 @@ if ( $extra_tag || $extra_titel || $extra_subtitel || $extra_items ) :
                 <?php while ( have_rows('extra_grid_items') ) : the_row(); 
                     $kaart_titel  = get_sub_field('titel'); 
                     $kaart_tekst  = get_sub_field('beschrijving'); 
-                    $rand_kleur   = get_sub_field('extra_kaart_rand_kleur'); // Aangepast naar sub_field (of laat get_field als hij erbuiten staat)
+                    $rand_kleur   = get_sub_field('extra_kaart_rand_kleur');
                     $border_class = ( $rand_kleur && $rand_kleur !== 'geen' ) ? ' border-' . strtolower($rand_kleur) : '';
                 ?>
                     <div class="extra-grid-card<?php echo esc_attr($border_class); ?>">

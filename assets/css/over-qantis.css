@@ -74,7 +74,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive / Mobiel */
 @media (max-width: 992px) {
     .over-qantis-container {
         grid-template-columns: 1fr;

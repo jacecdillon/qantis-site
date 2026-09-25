@@ -5,16 +5,18 @@
                 © <?php echo date('Y'); ?> <?php echo esc_html(get_field('copyright_tekst', 'option') ?: 'Qantis — makes IT easy'); ?>
             </div>
             
-            <div class="footer-links">
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'footer_menu',
-                    'container'      => false,
-                    'fallback_cb'    => false,
-                    'depth'          => 1,
-                ));
-                ?>
-            </div>
+           <div class="footer-bottom-links">
+    <?php 
+    $privacy_url = get_privacy_policy_url();
+    if ( $privacy_url ) : 
+    ?>
+        <a href="<?php echo esc_url( $privacy_url ); ?>">Privacy</a>
+    <?php else : ?>
+        <a href="<?php echo esc_url( home_url('/privacybeleid') ); ?>">Privacy</a>
+    <?php endif; ?>
+    
+    <a href="<?php echo esc_url( home_url('/algemene-voorwaarden') ); ?>">Voorwaarden</a>
+</div>
         </div>
     </div>
 </footer>
