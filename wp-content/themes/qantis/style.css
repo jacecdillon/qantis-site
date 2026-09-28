@@ -156,11 +156,14 @@ a {
 }
 
 .propositie-nav a {
+    display: flex;
+    align-items: center;
     padding: 20px 32px;
     background: var(--navy2);
     color: var(--muted);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1;
     border-right: 1px solid rgba(255, 255, 255, 0.07);
     transition: 0.15s;
 }
@@ -174,7 +177,29 @@ a {
     background: var(--navy3);
     color: var(--white);
 }
-
+.propositie-nav .nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.propositie-nav .nav-number {
+  font-weight: 600;
+  margin-right: 8px;
+}
+.propositie-nav .nav-dash {
+    font-weight: 600;
+    margin-right: 8px;
+    line-height: 1;
+    position: relative;
+    top: -1px;
+}
+.propositie-nav .nav-title {
+    white-space: nowrap;
+    line-height: 1;
+}
 /* Hero Section */
 .hero {
     position: relative;
@@ -1162,4 +1187,7 @@ a {
     .opd-grid {
         grid-template-columns: 1fr;
     }
+}
+.prop-card:hover{
+    transform: translateY(-5px);
 }

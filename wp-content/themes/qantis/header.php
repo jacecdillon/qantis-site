@@ -43,6 +43,5 @@ $selected_menu_id = get_field('menu_keuze') ?: 12;
             ]);
             ?>
         </div>
-        <span class="emoji-phone">📞</span>
         <p class="phone"><?php echo esc_html($phone); ?></p>
     </header>

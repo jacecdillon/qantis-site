@@ -57,6 +57,7 @@ $opdrachten = get_field('opdrachten');
                 <div class="prop-grid">
                     <?php foreach ($proposities['propositie'] as $item) { ?>
                         <div class="prop-card">
+                            
                             <div class="prop-head">
                                 <p class="prop-num">
                                     <?php echo $item['num_tag'] ?>
@@ -81,6 +82,7 @@ $opdrachten = get_field('opdrachten');
                                     <span class="arrow"><?php echo $item['arrow'] ?></span>
                                 </a>
                             </div>
+                            
                         </div>
                     <?php } ?>
                 </div>
@@ -125,7 +127,6 @@ $opdrachten = get_field('opdrachten');
                     </div>
                 </div>
             </div>
-
         </section>
     <?php } ?>
 
