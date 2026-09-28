@@ -6,13 +6,13 @@ function qantis_theme_setup() {
 
     register_nav_menus(array(
         'primary'     => __('Hoofdmenu', 'qantis'),
-        'footer_menu' => __('Footer Menu', 'qantis'),
     ));
 }
 add_action('after_setup_theme', 'qantis_theme_setup');
 
 require_once get_template_directory() . '/inc/cpt-registratie.php';
 require_once get_template_directory() . '/inc/contact-handler.php';
+require_once get_template_directory() . '/inc/helpers.php';
 
 function qantis_enqueue_assets() {
     wp_enqueue_style( 'qantis-style', get_stylesheet_uri(), array(), '1.0.0' );
@@ -27,7 +27,7 @@ function qantis_enqueue_assets() {
     }
 
     if ( is_front_page() ) {
-        $front_styles = array('thuisbasis', 'over-qantis', 'opdrachten', 'cta-banner');
+        $front_styles = array('thuisbasis', 'over-qantis', 'opdrachten', 'vacature-cta', 'cta-banner');
         foreach ( $front_styles as $style ) {
             $path = '/assets/css/' . $style . '.css';
             if ( file_exists( get_template_directory() . $path ) ) {
@@ -53,11 +53,21 @@ function qantis_enqueue_assets() {
         }
     }
 
+    if ( ! is_front_page() && ( is_post_type_archive( 'opdrachten' ) || is_tax( 'propositie' ) ) ) {
+        $path = '/assets/css/opdrachten.css';
+        wp_enqueue_style(
+            'qantis-opdrachten',
+            get_template_directory_uri() . $path,
+            array('qantis-main-style'),
+            filemtime(get_template_directory() . $path)
+        );
+    }
+
     if ( file_exists( get_template_directory() . '/assets/js/main.js' ) ) {
         wp_enqueue_script(
             'qantis-js',
             get_template_directory_uri() . '/assets/js/main.js',
-            array('jquery'),
+            array(),
             filemtime(get_template_directory() . '/assets/js/main.js'),
             true
         );
@@ -84,21 +94,42 @@ if ( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title' => 'Site Opties',
         'menu_title' => 'Site Opties',
-        'menu_slug'  => 'site-options',
+        'menu_slug'  => 'site-instellingen',
         'capability' => 'edit_posts',
         'redirect'   => false
     ));
 }
 
+function qantis_accent_slug( $page_id = null ) {
+    $map = array(
+        '#1582ca' => 'blue',
+        '#e86a2c' => 'orange',
+        '#1a9e5c' => 'green',
+        'blue'    => 'blue',
+        'orange'  => 'orange',
+        'green'   => 'green',
+    );
+    $raw = function_exists('get_field') ? get_field( 'accent_kleur', $page_id ?: false ) : '';
+    $key = strtolower( trim( (string) $raw ) );
+    return isset( $map[ $key ] ) ? $map[ $key ] : 'blue';
+}
+
+function qantis_get_proposities() {
+    return new WP_Query( array(
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'meta_key'       => '_wp_page_template',
+        'meta_value'     => 'page-propositie.php',
+        'posts_per_page' => -1,
+        'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+        'no_found_rows'  => true,
+    ) );
+}
+
 function qantis_add_theme_body_class( $classes ) {
     if ( is_page_template( 'page-propositie.php' ) ) {
-        $accent = get_field( 'accent_kleur' ); 
-        
-        if ( ! empty( $accent ) ) {
-            $classes[] = 'theme-' . sanitize_html_class( $accent );
-        } else {
-            $classes[] = 'theme-blue';
-        }
+        $classes[] = 'propositie-page';
+        $classes[] = 'theme-' . qantis_accent_slug( get_queried_object_id() );
     }
     return $classes;
 }

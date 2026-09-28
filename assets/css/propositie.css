@@ -507,6 +507,7 @@ body.theme-orange .extra-grid-card.border-blue {
 
 body.theme-orange .extra-grid-card.border-orange {
     border-top: none;
+    background-color: var(--navy);
     border-left: 4px solid var(--accent-orange);
 }
 
@@ -597,8 +598,6 @@ body.theme-orange .extra-sectie {
         font-size: 2.5rem; 
     }
 }
-
-/*   SPLIT SECTIE (Afbeelding + Kaarten Grid) */
 
 .split-sectie {
     padding: 80px 0;
@@ -708,7 +707,6 @@ body.theme-orange .extra-sectie {
     }
 }
 
-/*   MOBIELE NAVIGATIE - */
 @media (max-width: 900px) {
     .site-header-propositie .header-container {
         position: static;
@@ -749,4 +747,20 @@ body.theme-orange .extra-sectie {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
+}
+
+.extra-kaart {
+    max-width: 720px;
+    padding: 32px;
+    border-radius: 10px;
+    background-color: var(--navy2, #14243B);
+    border-left: 4px solid var(--accent);
+    color: #ffffff;
+}
+.extra-kaart-titel { margin: 0 0 12px; font-size: 1.4rem; font-weight: 700; }
+.extra-kaart-tekst { margin: 0 0 20px; line-height: 1.6; color: rgba(255, 255, 255, 0.75); }
+
+body.theme-blue .stappen-section,
+body.theme-blue .extra-sectie {
+    background-color: var(--navy3);
 }

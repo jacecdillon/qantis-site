@@ -3,7 +3,7 @@ $sectie_tag   = get_field('diensten_tag');
 $sectie_titel = get_field('diensten_titel');
 $sectie_sub   = get_field('badge_tekst');
 
-$accent_kleur = get_field('accent_kleur') ?: 'blue';
+$accent_kleur = qantis_accent_slug( get_queried_object_id() );
 
 $iconen = array(
     // (IT-Staffing)
@@ -47,13 +47,14 @@ $iconen = array(
                     $dienst_titel = get_sub_field('titel');
                     $tekst        = get_sub_field('beschrijving');
                     
-                    $kaart_kleur  = get_sub_field('kaart_kleur'); 
+                    $kaart_kleur  = get_sub_field('kaart_kleur');
+                    $kaart_class  = in_array( $kaart_kleur, array( 'blue', 'orange', 'green' ), true ) ? ' border-' . $kaart_kleur : '';
                 ?>
-                    <div class="dienst-kaart <?php echo esc_attr($kaart_kleur); ?>">
-                        <?php if ( $icoon_type && isset($iconen[$icoon_type]) ) : ?>
-                            <div class="dienst-icoon"><?php echo $iconen[$icoon_type]; ?></div>
-                        <?php elseif ( $icoon ) : ?>
+                    <div class="dienst-kaart<?php echo esc_attr( $kaart_class ); ?>">
+                        <?php if ( is_array( $icoon ) && ! empty( $icoon['url'] ) ) : ?>
                             <img src="<?php echo esc_url($icoon['url']); ?>" alt="<?php echo esc_attr($icoon['alt']); ?>" class="dienst-icoon-img">
+                        <?php elseif ( $icoon_type && isset($iconen[$icoon_type]) ) : ?>
+                            <div class="dienst-icoon"><?php echo $iconen[$icoon_type]; ?></div>
                         <?php else : ?>
                             <div class="dienst-icoon-placeholder"></div>
                         <?php endif; ?>

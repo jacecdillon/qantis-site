@@ -79,7 +79,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "http:\/\/localhost\/wordpress\/vacatures\/",
+            "default_value": "http://localhost/wordpress/vacatures/",
             "allow_in_bindings": 0,
             "placeholder": ""
         }
@@ -87,9 +87,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "page_type",
                 "operator": "==",
-                "value": "post"
+                "value": "front_page"
             }
         ]
     ],
@@ -105,5 +105,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790336273
+    "modified": 1790582997
 }

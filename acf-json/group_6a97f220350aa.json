@@ -100,7 +100,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "http:\/\/localhost\/wordpress\/over-ons\/",
+            "default_value": "http://localhost/wordpress/over-ons/",
             "allow_in_bindings": 0,
             "placeholder": ""
         },

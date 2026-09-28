@@ -24,7 +24,23 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../fonts/inter-v13-latin-regular.woff2') format('woff2');
+    src: url('../fonts/fonts/Inter_24pt-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/fonts/Inter_24pt-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/fonts/Inter_24pt-SemiBold.woff2') format('woff2');
 }
 
 @font-face {
@@ -32,9 +48,16 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../fonts/inter-v13-latin-700.woff2') format('woff2');
+    src: url('../fonts/fonts/Inter_24pt-Bold.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('../fonts/fonts/Inter_24pt-ExtraBold.woff2') format('woff2');
+}
 
 /* 2. GLOBAL RESET & BASE STYLES */
 
@@ -209,22 +232,25 @@ main, #content, .site-main {
 }
 
 .hero-section[style*="--hero-bg"] {
-    background-image: 
-        linear-gradient(to right, var(--navy) 0%, rgba(13, 27, 46, 0.4) 50%, transparent 100%),
-        url("data:image/svg+xml,%3Csvg width='60' height='70' viewBox='0 0 60 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,2 58,17 58,53 30,68 2,53 2,17' fill='none' stroke='rgba(23,130,196,0.09)' stroke-width='1'/%3E%3C/svg%3E"),
-        var(--hero-bg);
-    background-position: left center, left center, right center;
-    background-repeat: no-repeat, repeat, no-repeat;
-    background-size: cover, 60px 70px, 65% auto;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='70' viewBox='0 0 60 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,2 58,17 58,53 30,68 2,53 2,17' fill='none' stroke='rgba(23,130,196,0.09)' stroke-width='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 60px 70px;
+    background-position: left center;
 }
 
-body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
-    background-image: 
-        linear-gradient(to right, var(--navy) 100%, rgba(13, 27, 46, 0.4) 100%, transparent 100%),
-        var(--hero-bg);
-    background-position: left center, right center;
-    background-repeat: repeat, repeat;
-    background-size: 65% auto;
+.hero-section[style*="--hero-bg"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 65%;
+    background: var(--hero-bg) center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 55%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hero-container {
@@ -729,6 +755,12 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
     font-weight: 700;
     text-decoration: none;
     display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-scan-box .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .usp-grid-section {
@@ -1467,3 +1499,24 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
     color: rgba(255, 255, 255, 0.55);
     font-weight: 600;
 }
+
+@media (max-width: 900px) {
+    .hero-section[style*="--hero-bg"]::before {
+        width: 100%;
+        opacity: 0.35;
+    }
+}
+
+.vacature-apply { margin-top: 32px; }
+.vacature-apply .btn-apply {
+    display: inline-block;
+    background-color: var(--blue, #1582CA);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: var(--r, 6px);
+    font-weight: 700;
+    text-decoration: none;
+}
+.vacature-apply .btn-apply:hover { background-color: #176db0; }
+
+.footer-social { flex-wrap: wrap; }

@@ -5,17 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 </head>
-<?php
-$theme_class = '';
-if (is_page('it-staffing')) {
-    $theme_class = 'theme-blue propositie-page';
-} elseif (is_page('ot-civiel-industrie')) {
-    $theme_class = 'theme-orange propositie-page';
-} elseif (is_page('qaas-mkb')) {
-    $theme_class = 'theme-green propositie-page';
-}
-?>
-<body <?php body_class( $theme_class ); ?>>
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
 <header class="site-header site-header-propositie">
@@ -38,24 +28,21 @@ if (is_page('it-staffing')) {
 
         <nav id="site-navigation" class="main-navigation propositie-navigation">
             <ul class="nav-menu">
-                <li class="<?php echo is_page('it-staffing') ? 'current-menu-item' : ''; ?>">
-                    <a href="<?php echo esc_url( home_url( '/it-staffing/' ) ); ?>">IT-Staffing</a>
-                </li>
-                <li class="<?php echo is_page('ot-civiel-industrie') ? 'current-menu-item' : ''; ?>">
-                    <a href="<?php echo esc_url( home_url( '/ot-civiel-industrie/' ) ); ?>">OT Civiel & Industrie</a>
-                </li>
-                <li class="<?php echo is_page('qaas-mkb') ? 'current-menu-item' : ''; ?>">
-                    <a href="<?php echo esc_url( home_url( '/qaas-mkb/' ) ); ?>">QAAS MKB</a>
-                </li>
+                <?php $prop_menu = qantis_get_proposities(); ?>
+                <?php while ( $prop_menu->have_posts() ) : $prop_menu->the_post(); ?>
+                    <li class="<?php echo ( get_the_ID() === get_queried_object_id() ) ? 'current-menu-item' : ''; ?>">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </li>
+                <?php endwhile; wp_reset_postdata(); ?>
             </ul>
         </nav>
 
         <div class="header-contact">
-            <a href="tel:0883520600" class="phone-link" aria-label="Bel ons: 088 35 20 600">
+            <a href="<?php echo esc_url( qantis_phone_href() ); ?>" class="phone-link" aria-label="<?php echo esc_attr( 'Bel ons: ' . qantis_phone_display() ); ?>">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
-                <span>088 &ndash; 35 20 600</span>
+                <span><?php echo esc_html( qantis_phone_display() ); ?></span>
             </a>
 
             <button type="button" class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Menu openen">
@@ -68,29 +55,17 @@ if (is_page('it-staffing')) {
 </header>
 
 <?php
-$nav_theme_class = '';
-if (is_page('it-staffing')) {
-    $nav_theme_class = 'theme-blue';
-} elseif (is_page('ot-civiel-industrie')) {
-    $nav_theme_class = 'theme-orange';
-} elseif (is_page('qaas-mkb')) {
-    $nav_theme_class = 'theme-green';
-}
+$current_id = get_queried_object_id();
+$tabs       = qantis_get_proposities();
 ?>
 
-<div class="propositie-nav-bar <?php echo $nav_theme_class; ?>">
+<div class="propositie-nav-bar theme-<?php echo esc_attr( qantis_accent_slug( $current_id ) ); ?>">
     <div class="propositie-nav-container">
-        <a href="<?php echo esc_url( home_url( '/it-staffing/' ) ); ?>" class="propositie-tab <?php echo is_page('it-staffing') ? 'is-active' : ''; ?>">
-            <span class="tab-dot dot-blue"></span>
-            <span class="tab-label">01 - IT Staffing</span>
-        </a>
-        <a href="<?php echo esc_url( home_url( '/ot-civiel-industrie/' ) ); ?>" class="propositie-tab <?php echo is_page('ot-civiel-industrie') ? 'is-active' : ''; ?>">
-            <span class="tab-dot dot-orange"></span>
-            <span class="tab-label">02 - OT Civiel/Industrie</span>
-        </a>
-        <a href="<?php echo esc_url( home_url( '/qaas-mkb/' ) ); ?>" class="propositie-tab <?php echo is_page('qaas-mkb') ? 'is-active' : ''; ?>">
-            <span class="tab-dot dot-green"></span>
-            <span class="tab-label">03 - QAAS MKB</span>
-        </a>
+        <?php $n = 1; while ( $tabs->have_posts() ) : $tabs->the_post(); ?>
+            <a href="<?php the_permalink(); ?>" class="propositie-tab <?php echo ( get_the_ID() === $current_id ) ? 'is-active' : ''; ?>">
+                <span class="tab-dot dot-<?php echo esc_attr( qantis_accent_slug( get_the_ID() ) ); ?>"></span>
+                <span class="tab-label"><?php echo esc_html( sprintf( '%02d - %s', $n, get_the_title() ) ); ?></span>
+            </a>
+        <?php $n++; endwhile; wp_reset_postdata(); ?>
     </div>
 </div>

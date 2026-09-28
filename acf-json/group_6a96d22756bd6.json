@@ -25,11 +25,74 @@
         },
         {
             "key": "field_6a96d2434f4a3",
-            "label": "Hero Titel",
+            "label": "Hero Titel (kan code in)",
             "name": "hero_titel",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Oud veld (mag HTML bevatten). Wordt alleen gebruikt als de drie velden hieronder leeg zijn.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6c1a0001a1b01",
+            "label": "Hero Titel - regel 1",
+            "name": "hero_titel_regel_1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Eerste regel, gewone tekst.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6c1a0002a1b02",
+            "label": "Hero Titel - gemarkeerde regel",
+            "name": "hero_titel_accent",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Tweede regel, wordt in de accentkleur getoond.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6c1a0003a1b03",
+            "label": "Hero Titel - regel 3",
+            "name": "hero_titel_regel_3",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Derde regel, gewone tekst.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -171,5 +234,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790336244
+    "modified": 1790587899
 }

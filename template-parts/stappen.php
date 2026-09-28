@@ -4,6 +4,10 @@ $stappen_titel       = get_field('stappen_titel');
 $stappen_sub         = get_field('stappen_subtitel');
 $stappen_footer_tekst = get_field('stappen_footer_tekst');
 $stappen_foto        = get_field('stappen_afbeelding');
+
+if ( ! $stappen_titel && ! have_rows('stappen_lijst') ) {
+    return;
+}
 ?>
 
 <section class="stappen-section">

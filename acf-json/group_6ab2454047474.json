@@ -45,6 +45,27 @@
             "append": ""
         },
         {
+            "key": "field_c882a480f4a15",
+            "label": "Niveau",
+            "name": "niveau",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Medior/Senior",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6ab24579aa011",
             "label": "Doorlooptijd",
             "name": "doorlooptijd",
@@ -109,7 +130,7 @@
         },
         {
             "key": "field_6ab245acaa014",
-            "label": "Technologieën \/ Tags",
+            "label": "Technologieën / Tags",
             "name": "technologieen",
             "aria-label": "",
             "type": "text",
@@ -150,5 +171,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790336247
+    "modified": 1790600000
 }

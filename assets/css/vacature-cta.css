@@ -1,0 +1,62 @@
+.vacature-cta-section {
+    background-color: var(--navy2, #14243B);
+    padding: 64px 48px;
+    color: #ffffff;
+}
+
+.vacature-cta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.vacature-cta-badge {
+    display: inline-block;
+    background-color: rgba(45, 176, 246, 0.15);
+    color: var(--blue-light, #2DB0F6);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.vacature-cta-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: #ffffff;
+}
+
+.vacature-cta-description {
+    margin: 0;
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.vacature-cta-btn {
+    background-color: var(--blue, #1582CA);
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.vacature-cta-btn:hover {
+    background-color: #176db0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .vacature-cta-section { padding: 48px 20px; }
+}

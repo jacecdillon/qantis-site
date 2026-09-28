@@ -57,6 +57,13 @@ get_header(); ?>
                     <?php the_content(); ?>
                 </div>
 
+                <?php
+                $solliciteer_url = get_field( 'sollicitatielink' ) ?: home_url( '/#contact' );
+                ?>
+                <div class="vacature-apply">
+                    <a href="<?php echo esc_url( $solliciteer_url ); ?>" class="btn-apply">Solliciteer op deze vacature</a>
+                </div>
+
             </article>
         <?php endwhile; ?>
     </div>

@@ -1,11 +1,11 @@
 {
-    "key": "group_6a97fa0097ed4",
-    "title": "Sectie - Onze opdrachten",
+    "key": "group_6ab7a2d9f4c52",
+    "title": "Sectie - Vacature CTA",
     "fields": [
         {
-            "key": "field_6a97fa009b177",
-            "label": "Sectie Titel",
-            "name": "opdrachten_sectie_titel",
+            "key": "field_1b3a070564e63",
+            "label": "Titel",
+            "name": "vacature_cta_titel",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -19,14 +19,35 @@
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
-            "placeholder": "",
+            "placeholder": "Werken bij Qantis",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6a97fa349b178",
-            "label": "Bekijk Alles Tekst",
-            "name": "opdrachten_bekijk_alles_tekst",
+            "key": "field_f5ff2dc9d189c",
+            "label": "Tekst",
+            "name": "vacature_cta_tekst",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_184423d7da730",
+            "label": "Knoptekst",
+            "name": "vacature_cta_knop_tekst",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -40,14 +61,14 @@
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
-            "placeholder": "",
+            "placeholder": "Bekijk vacatures",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6a97fa489b179",
-            "label": "Bekijk Alles Link",
-            "name": "opdrachten_bekijk_alles_url",
+            "key": "field_fd46d1e1d6825",
+            "label": "Knop-URL",
+            "name": "vacature_cta_knop_url",
             "aria-label": "",
             "type": "url",
             "instructions": "",
@@ -58,7 +79,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "http://localhost/wordpress/opdrachten/",
+            "default_value": "",
             "allow_in_bindings": 0,
             "placeholder": ""
         }

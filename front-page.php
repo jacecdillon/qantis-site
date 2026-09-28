@@ -13,8 +13,18 @@ get_header();
             <?php echo esc_html( get_field('hero_subtitel') ?: 'GEVESTIGD IN ALKMAAR · NOORD-HOLLAND' ); ?>
         </span>
         <h1 class="hero-title">
-            <?php 
-            if ( get_field('hero_titel') ) {
+            <?php
+            $titel_r1  = get_field('hero_titel_regel_1');
+            $titel_acc = get_field('hero_titel_accent');
+            $titel_r3  = get_field('hero_titel_regel_3');
+
+            if ( $titel_r1 || $titel_acc || $titel_r3 ) {
+                $regels = array();
+                if ( $titel_r1 )  { $regels[] = esc_html( $titel_r1 ); }
+                if ( $titel_acc ) { $regels[] = '<span class="highlight-blue">' . esc_html( $titel_acc ) . '</span>'; }
+                if ( $titel_r3 )  { $regels[] = esc_html( $titel_r3 ); }
+                echo implode( '<br>', $regels );
+            } elseif ( get_field('hero_titel') ) {
                 echo wp_kses_post( get_field('hero_titel') );
             } else {
                 echo 'IT expertise<br><span class="highlight-blue">Open, eerlijk</span><br>en transparant';
@@ -35,52 +45,35 @@ get_header();
     </div>
     </section>
 
+    <?php $page_id = get_option('page_on_front') ?: get_the_ID(); ?>
+
     <section class="prop-teaser-section">
         <div class="inner">
             <div class="prop-teaser-grid">
-                <?php 
-                $page_id = get_option('page_on_front') ?: get_the_ID();
-
-                if ( have_rows('proposities', $page_id) ) : $i = 1; 
-                    while ( have_rows('proposities', $page_id) ) : the_row();
-
-                        $accent_raw          = get_sub_field('kleur_accent');
-                        $accent_color        = ! empty($accent_raw) ? strtolower(trim($accent_raw)) : 'blue';
-                        
-                        $titel_teaser        = get_sub_field('titel'); 
-                        $teaser_beschrijving = get_sub_field('teaser_beschrijving') ?: get_sub_field('beschrijving');
-                        $link                = get_sub_field('pagina_link');
-
-                        $tags_field = get_sub_field('tags_lijst');
-                        $tags       = $tags_field ? array_filter( array_map('trim', preg_split('/[\n\r,]+/', $tags_field)) ) : array();
+                <?php
+                $proposities = qantis_get_proposities();
+                $i = 1;
+                while ( $proposities->have_posts() ) : $proposities->the_post();
+                    $accent_color = qantis_accent_slug( get_the_ID() );
+                    $teaser       = get_field('teaser_tekst') ?: wp_trim_words( (string) get_field('hero_tekst'), 22 );
                 ?>
-                    <a href="<?php echo esc_url( $link ?: '#' ); ?>" class="prop-teaser-card border-<?php echo esc_attr($accent_color); ?>">
+                    <a href="<?php the_permalink(); ?>" class="prop-teaser-card border-<?php echo esc_attr($accent_color); ?>">
                         <span class="prop-teaser-number"><?php echo sprintf('%02d —', $i); ?></span>
 
-                        <?php if ( $titel_teaser ) : ?>
-                            <h3 class="prop-teaser-title"><?php echo esc_html($titel_teaser); ?></h3>
-                        <?php endif; ?>
+                        <h3 class="prop-teaser-title"><?php the_title(); ?></h3>
 
-                        <?php if ( $teaser_beschrijving ) : ?>
-                            <p class="prop-teaser-description"><?php echo esc_html($teaser_beschrijving); ?></p>
-                        <?php endif; ?>
-
-                        <?php if ( ! empty($tags) ) : ?>
-                            <div class="prop-teaser-tags list-<?php echo esc_attr($accent_color); ?>">
-                                <?php foreach ( $tags as $tag_item ) : ?>
-                                    <span><?php echo esc_html( $tag_item ); ?></span>
-                                <?php endforeach; ?>
-                            </div>
+                        <?php if ( $teaser ) : ?>
+                            <p class="prop-teaser-description"><?php echo esc_html($teaser); ?></p>
                         <?php endif; ?>
 
                         <span class="prop-teaser-link link-<?php echo esc_attr($accent_color); ?>">
-                            Meer over <?php echo esc_html($titel_teaser); ?> <span class="arrow">&rarr;</span>
+                            Meer over <?php the_title(); ?> <span class="arrow">&rarr;</span>
                         </span>
                     </a>
-                <?php 
-                        $i++; 
-                    endwhile; 
-                endif; 
+                <?php
+                    $i++;
+                endwhile;
+                wp_reset_postdata();
                 ?>
             </div>
         </div>
@@ -154,6 +147,8 @@ get_header();
     <?php get_template_part('template-parts/over-qantis'); ?>
 
     <?php get_template_part('template-parts/opdrachten'); ?>
+
+    <?php get_template_part('template-parts/vacature-cta'); ?>
 
     <?php get_template_part('template-parts/cta-banner'); ?>
 

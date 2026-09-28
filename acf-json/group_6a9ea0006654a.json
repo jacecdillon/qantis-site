@@ -256,6 +256,27 @@
             "append": ""
         },
         {
+            "key": "field_2030d94a56c1f",
+            "label": "Teaser tekst (homepage)",
+            "name": "teaser_tekst",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_6a9ea0867a191",
             "label": "Knop 1 Tekst",
             "name": "hero_button_1_tekst",
@@ -517,7 +538,65 @@
                     "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
-                    "allow_null": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_6a9ea0f27a196"
+                },
+                {
+                    "key": "field_0128da954b6d3",
+                    "label": "Eigen icoon",
+                    "name": "icoon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_6a9ea0f27a196"
+                },
+                {
+                    "key": "field_0021d670ed8f6",
+                    "label": "Kaartkleur",
+                    "name": "kaart_kleur",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "blue": "Blauw",
+                        "orange": "Oranje",
+                        "green": "Groen"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
@@ -585,6 +664,27 @@
             "maxlength": "",
             "allow_in_bindings": 0,
             "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_6e85e1725fea1",
+            "label": "Stappen subtitel",
+            "name": "stappen_subtitel",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
             "placeholder": "",
             "new_lines": ""
         },
@@ -1010,14 +1110,14 @@
                 "id": ""
             },
             "choices": {
-                "geen: Geen extra sectie": "geen: Geen extra sectie",
-                "grid: Grid \/ Expertises": "grid: Grid \/ Expertises",
-                "card: Uitgelichte Kaart \/ Tarief": "card: Uitgelichte Kaart \/ Tarief"
+                "geen": "Geen extra sectie",
+                "grid": "Grid / Expertises",
+                "card": "Uitgelichte kaart / Tarief"
             },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
-            "allow_null": 0,
+            "allow_null": 1,
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
@@ -1739,5 +1839,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790336249
+    "modified": 1790610000
 }
