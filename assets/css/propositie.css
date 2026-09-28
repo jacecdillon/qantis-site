@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. CSS Custom Properties & Base Styles
-   ========================================================================== */
+/*   1. CSS Custom Properties & Base Styles */
 
 :root {
     --bg-dark: #071327;
@@ -103,9 +101,7 @@ body,
     border-color: var(--border-light);  
 }
 
-/* ==========================================================================
-   2. Header & Top Navigatie (Glassmorphism Hover & Actieve Kleuren)
-   ========================================================================== */
+/*   2. Header & Top Navigatie (Glassmorphism Hover & Actieve Kleuren) */
 
 .site-header-propositie .header-container {
     display: flex;
@@ -164,9 +160,7 @@ body,
     color: var(--accent-green);
 }
 
-/* ==========================================================================
-   3. Subnavigatie Bar (Tabs)
-   ========================================================================== */
+/*   3. Subnavigatie Bar (Tabs) */
 
 .propositie-nav-bar {
     background-color: #0c1b33;
@@ -237,9 +231,7 @@ body,
     letter-spacing: 0.3px;
 }
 
-/* ==========================================================================
-   4. Page Sections (Hero, Diensten, Stappen, Extra, CTA)
-   ========================================================================== */
+/*   4. Page Sections (Hero, Diensten, Stappen, Extra, CTA) */
 
 .hero-section {
     padding: 80px 0;
@@ -570,9 +562,7 @@ body.theme-orange .extra-sectie {
     background-color: var(--bg-card);
 }
 
-/* ==========================================================================
-   5. Responsive Styles
-   ========================================================================== */
+/*   5. Responsive Styles */
 
 @media (max-width: 992px) {
     .hero-container, 
@@ -608,9 +598,7 @@ body.theme-orange .extra-sectie {
     }
 }
 
-/* ==========================================
-   SPLIT SECTIE (Afbeelding + Kaarten Grid)
-   ========================================== */
+/*   SPLIT SECTIE (Afbeelding + Kaarten Grid) */
 
 .split-sectie {
     padding: 80px 0;
@@ -717,5 +705,48 @@ body.theme-orange .extra-sectie {
 @media (max-width: 576px) {
     .split-grid-wrapper {
         grid-template-columns: 1fr;
+    }
+}
+
+/*   MOBIELE NAVIGATIE - */
+@media (max-width: 900px) {
+    .site-header-propositie .header-container {
+        position: static;
+    }
+
+    .site-header-propositie .propositie-navigation {
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: translateY(-8px);
+    }
+
+    .site-header.nav-open.site-header-propositie .propositie-navigation {
+        transform: translateY(0);
+    }
+
+    .site-header-propositie .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .site-header-propositie .nav-menu a {
+        display: flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 12px 4px;
+        font-size: 18px;
+        border: 0;
+        border-bottom: 1px solid var(--border-nav, rgba(255, 255, 255, 0.08));
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .site-header-propositie .nav-menu a:hover {
+        transform: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 }

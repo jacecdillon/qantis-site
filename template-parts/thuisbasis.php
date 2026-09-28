@@ -1,8 +1,8 @@
 <?php
-$sub_titel    = get_field('thuisbasis_sub_titel') ?: 'ONZE THUISBASIS';
-$titel        = get_field('thuisbasis_titel') ?: 'Geworteld in Alkmaar, actief door heel Nederland';
+$sub_titel    = get_field('thuisbasis_sub_title') ?: 'ONZE THUISBASIS';
+$titel        = get_field('thuisbasis_title') ?: 'Geworteld in Alkmaar, actief door heel Nederland';
 $beschrijving = get_field('thuisbasis_beschrijving');
-$afbeelding   = get_field('thuisbasis_afbeelding');
+$afbeelding   = get_field('thuisbasis_image');
 
 $telefoon = get_field('telefoonnummer', 'option') ?: '088 35 20 600';
 $tijden   = get_field('openingstijden', 'option') ?: '9:00 – 17:00';
@@ -11,9 +11,9 @@ $tijden   = get_field('openingstijden', 'option') ?: '9:00 – 17:00';
 <section class="thuisbasis-section">
     <div class="thuisbasis-container">
         
-        <div class="thuisbasis-image">
+        <div class="thuisbasis-media">
             <?php if ( !empty($afbeelding) ) : ?>
-                <img src="<?php echo esc_url($afbeelding['url']); ?>" alt="<?php echo esc_attr($afbeelding['alt']); ?>">
+                <img src="<?php echo esc_url($afbeelding['url']); ?>" alt="<?php echo esc_attr($afbeelding['alt'] ?: $titel); ?>">
             <?php else : ?>
                 <div class="thuisbasis-placeholder"></div>
             <?php endif; ?>

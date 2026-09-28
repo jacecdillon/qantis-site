@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. VARIABLES & FONTS
-   ========================================================================== */
+/* 1. VARIABLES & FONTS */
 
 :root {
     --navy: #0D1B2E;
@@ -38,9 +36,7 @@
 }
 
 
-/* ==========================================================================
-   2. GLOBAL RESET & BASE STYLES
-   ========================================================================== */
+/* 2. GLOBAL RESET & BASE STYLES */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -63,9 +59,7 @@ main, #content, .site-main {
 }
 
 
-/* ==========================================================================
-   3. SITE HEADER & NAVIGATION
-   ========================================================================== */
+/* 3. SITE HEADER & NAVIGATION */
 
 .site-header {
     position: sticky;
@@ -200,9 +194,7 @@ main, #content, .site-main {
 }
 
 
-/* ==========================================================================
-   4. HERO SECTION & DYNAMIC BUTTONS
-   ========================================================================== */
+/* 4. HERO SECTION & DYNAMIC BUTTONS */
 
 .hero-section {
     position: relative;
@@ -335,9 +327,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   5. PROPOSITIE TEASER SECTIE
-   ========================================================================== */
+/* 5. PROPOSITIE TEASER SECTIE  */
 
 .prop-teaser-section {
     background-color: var(--navy-dark);
@@ -438,9 +428,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   6. PROPOSITIONS MAIN SECTION & CARDS
-   ========================================================================== */
+/* 6. PROPOSITIONS MAIN SECTION & CARDS */
 
 .prop-section {
     background-color: var(--navy2);
@@ -596,9 +584,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   7. COLOR ACCENT HELPER CLASSES 
-   ========================================================================== */
+/* 7. COLOR ACCENT HELPER CLASSES */
 
 .border-blue, .prop-teaser-card.border-blue { border-top: 4px solid var(--blue); }
 .prop-teaser-card.border-blue .prop-teaser-title::after { background-color: var(--blue); }
@@ -617,9 +603,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 .prop-bullets.list-green li::before { color: var(--green); }
 
 
-/* ==========================================================================
-   8. TOEPASSINGSGEBIEDEN SECTION 
-   ========================================================================== */
+/* 8. TOEPASSINGSGEBIEDEN SECTION */
 
 .toepassingsgebieden-section {
     background-color: var(--navy);
@@ -635,9 +619,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   9. DIENSTMODEL & USP SECTIES
-   ========================================================================== */
+/* 9. DIENSTMODEL & USP SECTIES */
 
 .dienstmodel-section {
     padding: 80px 0;
@@ -811,9 +793,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   10. CTA BANNER SECTION (GECENTREERD)
-   ========================================================================== */
+/* 10. CTA BANNER SECTION */
 
 .cta-banner-section {
     background-color: var(--accent, var(--navy3));
@@ -881,9 +861,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   11. WORDPRESS CPT GRID & SINGLE TEMPLATES
-   ========================================================================== */
+/* 11. WORDPRESS CPT GRID & SINGLE TEMPLATES */
 
 .opdrachten-grid, 
 .vacatures-grid {
@@ -974,9 +952,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   12. SITE FOOTER & CONTACT FORM
-   ========================================================================== */
+/* 12. SITE FOOTER & CONTACT FORM */
 
 .footer-container {
     max-width: 1140px;
@@ -1212,9 +1188,7 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
 }
 
 
-/* ==========================================================================
-   13. RESPONSIVE STYLES (MEDIA QUERIES)
-   ========================================================================== */
+/* 13. RESPONSIVE STYLES */
 
 @media (max-width: 900px) {
     .prop-teaser-grid,
@@ -1276,4 +1250,220 @@ body[class*="it-staffing"] .hero-section[style*="--hero-bg"] {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+
+/* 14. MOBIELE NAVIGATIE */
+
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 900px) {
+
+    .site-header {
+        padding: 0 20px;
+    }
+
+    .site-branding {
+        margin-right: 0;
+    }
+
+    .header-contact {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .header-contact .phone-link {
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+        border-radius: 50%;
+        color: var(--white);
+    }
+
+    .header-contact .phone-link span {
+        display: none;
+    }
+
+    .header-contact .phone-link svg {
+        width: 22px;
+        height: 22px;
+        stroke: none;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-toggle:focus-visible {
+        outline: 2px solid var(--blue-light, #3898ec);
+        outline-offset: 2px;
+    }
+
+    .nav-toggle-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--white, #fff);
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .site-header.nav-open .nav-toggle-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-header.nav-open .nav-toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-header.nav-open .nav-toggle-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .main-navigation {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: calc(100vh - 68px);
+        height: calc(100dvh - 68px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color: var(--navy, #0D1B2E);
+        border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+        padding: 8px 20px 32px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    }
+
+    .site-header.nav-open .main-navigation {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    body.nav-locked {
+        overflow: hidden;
+    }
+
+    .main-navigation .nav-menu {
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-navigation .nav-menu > li > a,
+    .main-navigation .nav-menu li a {
+        display: flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 12px 4px;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--white, #fff);
+        border-radius: 0;
+        border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+        white-space: normal;
+    }
+
+    .main-navigation .sub-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        padding: 0 0 0 16px;
+        min-width: 0;
+    }
+
+    .main-navigation .sub-menu a {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--muted, rgba(255, 255, 255, 0.7));
+    }
+
+    .main-navigation .nav-menu li.current-menu-item > a {
+        color: var(--accent, var(--blue-light, #3898ec));
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 0 16px;
+    }
+}
+
+/* 15. VACATURE / OPDRACHT DETAIL: META-BLOK + SUBTITEL */
+
+.vacature-subtitel {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: -0.75rem 0 1.5rem;
+}
+
+.vacature-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.vacature-meta-box,
+.opdracht-meta-box {
+    background: var(--navy2);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.vacature-meta-box ul,
+.opdracht-meta-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem 1.5rem;
+}
+
+.vacature-meta-box li,
+.opdracht-meta-box li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--white);
+}
+
+.vacature-meta-box li strong,
+.opdracht-meta-box li strong {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
 }

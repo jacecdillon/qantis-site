@@ -103,3 +103,9 @@ function qantis_add_theme_body_class( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'qantis_add_theme_body_class' );
+
+function qantis_flush_rewrites_on_activation() {
+    qantis_register_custom_post_types();
+    flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'qantis_flush_rewrites_on_activation' );
