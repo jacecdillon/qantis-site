@@ -11,7 +11,7 @@
     --text-muted: #8899ac;
     --navy: #0D1B2E;
     --navy-dark: #0D1B2E;
-    --navy2: #14243B;
+    --navy2: #112240;
     --navy3: #162D4A;
     --border-light: rgba(255, 255, 255, 0.08);
     --border-nav: rgba(255, 255, 255, 0.1);
@@ -25,7 +25,7 @@
 
 body, 
 .propositie-page {
-    background-color: var(--bg-dark);
+    background-color: var(--navy);
     color: var(--text-white);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
@@ -101,7 +101,7 @@ body,
     border-color: var(--border-light);  
 }
 
-/*   2. Header & Top Navigatie (Glassmorphism Hover & Actieve Kleuren) */
+/*   2. Header & Top Navigatie*/
 
 .site-header-propositie .header-container {
     display: flex;
@@ -160,7 +160,7 @@ body,
     color: var(--accent-green);
 }
 
-/*   3. Subnavigatie Bar (Tabs) */
+/*   3. Subnavigatie Bar*/
 
 .propositie-nav-bar {
     background-color: #0c1b33;
@@ -231,7 +231,7 @@ body,
     letter-spacing: 0.3px;
 }
 
-/*   4. Page Sections (Hero, Diensten, Stappen, Extra, CTA) */
+/*   4. Page Sections    */
 
 .hero-section {
     padding: 120px 0;
@@ -560,7 +560,7 @@ body.theme-orange .extra-card-titel::before {
 }
 
 body.theme-orange .extra-sectie {
-    background-color: var(--bg-card);
+    background-color: var(--navy2);
 }
 
 /*   5. Responsive Styles */

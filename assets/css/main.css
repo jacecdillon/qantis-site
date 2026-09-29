@@ -1,9 +1,9 @@
 /* 1. VARIABLES & FONTS */
 
 :root {
-    --navy: #0D1B2E;
+    --navy: #0d1b2e;
     --navy-dark: #0D1B2E;
-    --navy2: #14243B;
+    --navy2: #112240;
     --navy3: #162D4A;
     --blue: #1582CA;
     --blue-light: #2DB0F6;
@@ -786,7 +786,7 @@ main, #content, .site-main {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 28px;
-    max-width: 700px;
+    max-width: 650px;
 }
 
 .usp-grid {
@@ -1449,7 +1449,7 @@ main, #content, .site-main {
     }
 }
 
-/* 15. VACATURE / OPDRACHT DETAIL: META-BLOK + SUBTITEL */
+/* 15. VACATURE / OPDRACHT DETAIL*/
 
 .vacature-subtitel {
     font-size: 1.15rem;
@@ -1520,3 +1520,18 @@ main, #content, .site-main {
 .vacature-apply .btn-apply:hover { background-color: #176db0; }
 
 .footer-social { flex-wrap: wrap; }
+
+/* 16. VACATURE ARCHIEF */
+
+.vacature-content .prop-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.vacature-content .vacature-subtitel {
+    margin-top: 0;
+}
+
+.vacature-content .prop-teaser-tags {
+    margin-bottom: 12px;
+}

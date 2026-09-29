@@ -45,17 +45,17 @@ get_header(); ?>
 
                             <div class="vacature-content">
                                 <h2 class="prop-title">
-                                    <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
+                                    <a href="<?php the_permalink(); ?>">
                                         <?php the_title(); ?>
                                     </a>
                                 </h2>
 
                                 <?php if ( $subtitel ) : ?>
-                                    <p class="vacature-subtitel" style="margin-top: 0;"><?php echo esc_html( $subtitel ); ?></p>
+                                    <p class="vacature-subtitel"><?php echo esc_html( $subtitel ); ?></p>
                                 <?php endif; ?>
 
                                 <?php if ( $tags ) : ?>
-                                    <div class="prop-teaser-tags" style="margin-bottom: 12px;">
+                                    <div class="prop-teaser-tags">
                                         <?php foreach ( $tags as $tag ) : ?>
                                             <span><?php echo esc_html( $tag ); ?></span>
                                         <?php endforeach; ?>

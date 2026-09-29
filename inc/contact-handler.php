@@ -29,6 +29,14 @@ function qantis_handle_contact_form() {
         wp_send_json_error('Vul een geldig e-mailadres in.');
     }
 
+    $limiet_sleutel = 'qantis_cf_' . md5( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '' );
+    $pogingen       = (int) get_transient($limiet_sleutel);
+
+    if ($pogingen >= 3) {
+        wp_send_json_error('Je hebt te vaak een bericht verstuurd. Probeer het over een paar minuten opnieuw.');
+    }
+    set_transient($limiet_sleutel, $pogingen + 1, 10 * MINUTE_IN_SECONDS);
+
     $to = get_field('emailadres', 'option') ?: 'recruitment@qantis.nl';
     $subject = 'Nieuw contactbericht van ' . $naam;
 

@@ -16,7 +16,7 @@ if ( is_page_template( 'page-propositie.php' ) ) {
 $cta_titel        = $cta_titel        ?: 'Op zoek naar IT-talent?';
 $cta_beschrijving = $cta_beschrijving ?: 'Vertel ons wat je nodig hebt. We reageren binnen één werkdag.';
 $cta_knop_tekst   = $cta_knop_tekst   ?: 'Plan een kennismakingsgesprek';
-$cta_knop_url     = $cta_knop_url     ?: home_url( '/#contact' );
+$cta_knop_url     = $cta_knop_url     ?: home_url( '/#contact' ); // Contactpagina als die is gemaakt
 ?>
 
 <section class="cta-banner-section">

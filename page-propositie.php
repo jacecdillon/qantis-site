@@ -14,21 +14,19 @@ get_header('propositie');
     get_template_part( 'template-parts/diensten-grid' );
     get_template_part( 'template-parts/dienstmodel' );
 
-    if ( is_page( 'ot-civiel-industrie' ) ) :
-        get_template_part( 'template-parts/extra-sectie' );
-        get_template_part( 'template-parts/usp' );
-        get_template_part( 'template-parts/split-sectie' );
-        get_template_part( 'template-parts/stappen' );
-    elseif ( is_page( 'it-staffing' ) ) :
-        get_template_part( 'template-parts/stappen' );
-        get_template_part( 'template-parts/extra-sectie' );
-        get_template_part( 'template-parts/split-sectie' );
-    else :
-        get_template_part( 'template-parts/usp' );
-        get_template_part( 'template-parts/extra-sectie' );
-        get_template_part( 'template-parts/split-sectie' );
-        get_template_part( 'template-parts/stappen' );
-    endif;
+    $onderdelen = array(
+        'usp'     => 'template-parts/usp',
+        'extra'   => 'template-parts/extra-sectie',
+        'split'   => 'template-parts/split-sectie',
+        'stappen' => 'template-parts/stappen',
+    );
+    $volgorde = get_field( 'sectie_volgorde', get_queried_object_id() ) ?: 'usp,extra,split,stappen';
+
+    foreach ( explode( ',', $volgorde ) as $sleutel ) {
+        if ( isset( $onderdelen[ $sleutel ] ) ) {
+            get_template_part( $onderdelen[ $sleutel ] );
+        }
+    }
 
     get_template_part( 'template-parts/cta-banner' );
     ?>
