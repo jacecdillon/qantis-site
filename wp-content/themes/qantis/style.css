@@ -1191,3 +1191,28 @@ a {
 .prop-card:hover{
     transform: translateY(-5px);
 }
+
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+.contact-info h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+#dark-map-container {
+  max-width: 250px;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+/* Прибираємо будь-які CSS-фільтри, бо тайли вже оригінально темні */
+#dark-map-container .leaflet-tile-pane {
+  filter: none !important;
+}

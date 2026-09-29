@@ -16,5 +16,6 @@ echo '</pre>';*/
     <?php get_template_part('template-parts/cta')?>
     <?php get_template_part('template-parts/contact-pagina')?>
     <?php get_template_part('template-parts/extra'); ?>
+    <?php get_template_part('template-parts/kaart') ?>
 </main>
 <?php get_footer() ?>

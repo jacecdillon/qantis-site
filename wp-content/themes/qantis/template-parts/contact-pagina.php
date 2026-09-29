@@ -4,6 +4,7 @@ $proposities = get_field('proposities');
 $thuisbasis = get_field('thuisbasis');
 $over = get_field('over');
 $opdrachten = get_field('opdrachten');
+
 ?>
 
 <section>
