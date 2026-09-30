@@ -680,7 +680,7 @@ main, #content, .site-main {
 }
 
 .dienstmodel-card {
-    background-color: var(--navy);
+    background-color: var(--navy2);
     border-radius: 12px;
     padding: 36px 32px;
     border-top: 4px solid var(--accent, #1582CA);
@@ -1102,6 +1102,7 @@ main, #content, .site-main {
     font-family: inherit;
     font-size: 14px;
     outline: none;
+    resize: none;
     transition: border-color 0.2s;
 }
 
@@ -1534,4 +1535,15 @@ main, #content, .site-main {
 
 .vacature-content .prop-teaser-tags {
     margin-bottom: 12px;
+}
+
+/* 17. TELEFOONNUMMER CONTACT */
+
+.contact-details .phone a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.contact-details .phone a:hover {
+    text-decoration: underline;
 }

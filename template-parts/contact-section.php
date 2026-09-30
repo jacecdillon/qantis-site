@@ -11,7 +11,7 @@
 
             <div class="contact-details">
                 <?php if ($telefoon = get_field('telefoonnummer', 'option')) : ?>
-                    <p class="phone"><strong><?php echo esc_html($telefoon); ?></strong></p>
+                    <p class="phone"><a href="<?php echo esc_attr( qantis_phone_href() ); ?>"><strong><?php echo esc_html($telefoon); ?></strong></a></p>
                 <?php endif; ?>
 
                 <?php if ($email = get_field('emailadres', 'option')) : ?>

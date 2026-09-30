@@ -81,6 +81,13 @@
     }
 
     .over-qantis-media img {
+        width: 100%;
         height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .over-qantis-section {
+        padding: 48px 20px;
     }
 }

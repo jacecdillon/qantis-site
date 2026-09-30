@@ -507,7 +507,7 @@
                         "orange": "Oranje",
                         "green": "Groen"
                     },
-                    "default_value": "",
+                    "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 1,
@@ -1025,8 +1025,8 @@
             },
             "choices": {
                 "geen": "Geen extra sectie",
-                "grid": "Grid / Expertises",
-                "card": "Uitgelichte kaart / Tarief"
+                "grid": "Grid \/ Expertises",
+                "card": "Uitgelichte kaart \/ Tarief"
             },
             "default_value": false,
             "return_format": "value",
@@ -1080,6 +1080,27 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6a9ea2137a1a6",
+            "label": "Extra Kaart Tekst",
+            "name": "extra_kaart_tekst",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         },
         {
             "key": "field_6a9ea1dc7a1a2",
@@ -1203,11 +1224,11 @@
             "append": ""
         },
         {
-            "key": "field_6a9ea2137a1a6",
-            "label": "Extra Kaart Tekst",
-            "name": "extra_kaart_tekst",
+            "key": "field_6a9ea21f7a1a7",
+            "label": "Extra Kaart Button Tekst",
+            "name": "extra_kaart_button_tekst",
             "aria-label": "",
-            "type": "textarea",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -1219,14 +1240,14 @@
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
-            "rows": "",
             "placeholder": "",
-            "new_lines": ""
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_6a9ea21f7a1a7",
-            "label": "Extra Kaart Button Tekst",
-            "name": "extra_kaart_button_tekst",
+            "key": "field_6aa90e6d91675",
+            "label": "Extra Subtitel",
+            "name": "extra_subtitel",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -1261,27 +1282,6 @@
             "default_value": "",
             "allow_in_bindings": 0,
             "placeholder": ""
-        },
-        {
-            "key": "field_6aa90e6d91675",
-            "label": "Extra Subtitel",
-            "name": "extra_subtitel",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_6a9ea2407a1a9",
@@ -1753,5 +1753,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790610000
+    "modified": 1790681568
 }

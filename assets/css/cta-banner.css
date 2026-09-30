@@ -29,23 +29,17 @@
 }
 
 .cta-banner-btn {
+    margin-top: 12px;
+}
+
+.cta-banner-btn .btn-cta {
     background-color: var(--blue-primary, #1d82ca);
     color: #ffffff;
     padding: 12px 28px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 14px;
-    margin-top: 12px;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    
 }
 
-.cta-banner-btn:hover {
+.cta-banner-btn .btn-cta:hover {
     background-color: #176db0;
     transform: translateY(-2px);
-}
-
-.cta-banner-btn a {
-    text-decoration: none;
-    color: white;
 }
