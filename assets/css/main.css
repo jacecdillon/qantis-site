@@ -212,7 +212,7 @@ main, #content, .site-main {
 .header-contact .phone-link svg {
     width: 16px;
     height: 16px;
-    stroke: var(--red);
+    stroke: var(--blue);
     flex-shrink: 0;
 }
 
