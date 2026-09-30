@@ -134,6 +134,25 @@
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.7);
 }
+@media (max-width: 576px) {
+    .opdrachten-section {
+        padding: 48px 20px;
+    }
+
+    .opdrachten-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .opdrachten-title {
+        font-size: 26px;
+    }
+
+    .opdrachten-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 .opdrachten-filter {
     display: flex;

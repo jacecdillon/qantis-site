@@ -59,4 +59,8 @@
 
 @media (max-width: 768px) {
     .vacature-cta-section { padding: 48px 20px; }
+
+    .vacature-cta-btn {
+        margin: 0 auto;
+    }
 }
