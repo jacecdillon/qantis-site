@@ -78,8 +78,8 @@ a {
 }
 
 .phone .fa-phone {
-    margin-right: 0.45em;
-    color: red;
+    margin-right: 2px;
+    color: #FF007F;
 }
 
 .brand-logo svg {
@@ -1396,6 +1396,468 @@ a {
 
     #dark-map-container {
         max-width: none;
+    }
+}
+
+/* Responsive layout refinements */
+img,
+svg,
+iframe {
+    max-width: 100%;
+}
+
+.inner,
+.exp-inner,
+.toepassing-inner,
+.voor-inner,
+.waar-inner,
+.qaas {
+    width: min(100%, 1040px);
+}
+
+@media (max-width: 1024px) {
+    .site-header {
+        padding-inline: 28px;
+    }
+
+    .main_menu a {
+        padding-inline: 10px;
+    }
+
+    .hero-content {
+        padding: 68px 36px 52px;
+    }
+
+    .section,
+    .contact-over,
+    .proposities-contact {
+        padding-inline: 36px;
+    }
+
+    .hoe-grid {
+        column-gap: 40px;
+    }
+
+    .hoe-img {
+        transform: none;
+    }
+
+    .waar-grid,
+    .prop-grid,
+    .opd-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .prop-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .alkmaar-grid,
+    .over-grid,
+    .voor-inner {
+        gap: 36px;
+    }
+
+    .toepassingsgebied {
+        padding-block: 72px;
+    }
+
+    .toepassing-inner {
+        padding-inline: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .site-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px 16px;
+        height: auto;
+        min-height: 68px;
+        padding: 12px 24px;
+    }
+
+    .brand-logo svg {
+        width: 156px;
+        height: auto;
+    }
+
+    .phone {
+        justify-self: end;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+
+    .menu-left {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        min-width: 0;
+    }
+
+    .main_menu {
+        flex-wrap: wrap;
+        gap: 2px 4px;
+    }
+
+    .main_menu a {
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    .propositie-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .propositie-nav a {
+        min-height: 48px;
+        padding: 14px 24px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .propositie-nav a:last-child {
+        border-bottom: 0;
+    }
+
+    .propositie-nav .nav-title {
+        white-space: normal;
+    }
+
+    .hero {
+        min-height: 440px;
+    }
+
+    .hero::after {
+        width: 100%;
+        opacity: 0.55;
+    }
+
+    .hero::before {
+        background: linear-gradient(to top, var(--navy2) 4%, rgba(17, 34, 64, 0.72) 65%, rgba(17, 34, 64, 0.25));
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 680px;
+        padding: 64px 24px 40px;
+    }
+
+    .hero h1,
+    .page-id-396 .hero h1 {
+        font-size: clamp(30px, 7vw, 46px);
+    }
+
+    .hero-sub {
+        font-size: 16px;
+        margin-bottom: 26px;
+    }
+
+    .btn-ghost {
+        margin-left: 6px;
+    }
+
+    .section,
+    .section-stappen,
+    .expertise,
+    .toepassingsgebied,
+    .voordelen,
+    .contact-over,
+    .proposities-contact {
+        padding: 64px 24px;
+    }
+
+    .inner,
+    .exp-inner,
+    .toepassing-inner,
+    .voor-inner,
+    .waar-inner,
+    .qaas {
+        width: 100%;
+    }
+
+    .waar-inner {
+        margin-block: 48px;
+    }
+
+    .hoe-grid {
+        grid-template-areas:
+            "tag"
+            "titel"
+            "sub"
+            "img"
+            "steps";
+        row-gap: 14px;
+    }
+
+    .hoe-img {
+        height: auto;
+        margin: 0 0 16px;
+    }
+
+    .hoe-img img {
+        max-height: 440px;
+    }
+
+    .steps {
+        gap: 24px;
+    }
+
+    .s-titel {
+        font-size: clamp(28px, 5vw, 36px);
+    }
+
+    .waar-grid,
+    .prop-grid,
+    .opd-grid,
+    .diensten-grid,
+    .exp-grid,
+    .toepassing-grid,
+    .tarieven-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .prop-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ps-item {
+        padding: 30px 26px;
+    }
+
+    .alkmaar-grid,
+    .over-grid,
+    .voor-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .thuisbasis-inner {
+        padding: 64px 24px;
+    }
+
+    .alkmaar-img {
+        max-height: 460px;
+    }
+
+    .alkmaar-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .ov-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+    }
+
+    .footer-tekst,
+    .footer-links {
+        padding-inline: 0;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+    .contact-grid {
+        gap: 32px;
+    }
+
+    .custom-form {
+        max-width: none;
+        padding: 24px;
+    }
+
+    .contact-form,
+    .contact-info {
+        min-width: 0;
+    }
+
+    .opd-header {
+        align-items: flex-start;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .quick-call {
+        padding: 56px 24px;
+    }
+
+    .quick-call h2 {
+        font-size: clamp(23px, 5vw, 28px);
+    }
+
+    .cta {
+        margin-inline: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-header {
+        grid-template-columns: 1fr;
+        padding: 12px 18px;
+    }
+
+    .brand-logo,
+    .phone {
+        justify-self: start;
+    }
+
+    .phone {
+        grid-row: 2;
+    }
+
+    .menu-left {
+        grid-row: 3;
+    }
+
+    .main_menu {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .main_menu a {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero-content {
+        padding: 52px 20px 32px;
+    }
+
+    .hero-tag {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-sub {
+        font-size: 15px;
+    }
+
+    .btn-accent,
+    .btn-ghost {
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+
+    .btn-ghost {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .section,
+    .section-stappen,
+    .expertise,
+    .toepassingsgebied,
+    .voordelen,
+    .contact-over,
+    .proposities-contact {
+        padding: 48px 20px;
+    }
+
+    .thuisbasis-inner {
+        padding: 48px 20px;
+    }
+
+    .diensten-grid,
+    .exp-grid,
+    .toepassing-grid,
+    .tarieven-grid,
+    .waar-grid,
+    .prop-grid,
+    .opd-grid,
+    .prop-strip,
+    .alkmaar-stats,
+    .voordelen-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dienst-card,
+    .waar-art,
+    .toepassing-card,
+    .exp-item,
+    .tarieven,
+    .ps-item {
+        padding: 24px;
+    }
+
+    .ps-item {
+        min-height: 0;
+    }
+
+    .section-sub {
+        margin-bottom: 32px;
+        font-size: 15px;
+    }
+
+    .s-sub {
+        margin-bottom: 28px;
+    }
+
+    .step {
+        gap: 14px;
+    }
+
+    .step-num {
+        width: 32px;
+        height: 32px;
+    }
+
+    .contact-grid {
+        gap: 26px;
+    }
+
+    .custom-form {
+        padding: 18px;
+    }
+
+    .custom-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .map-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .map-links a {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    #dark-map-container {
+        height: 220px;
+    }
+
+    .cta {
+        padding: 24px 20px;
+    }
+
+    .cta a,
+    .quick-call a {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 22px 20px;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-links {
+        gap: 10px 16px;
     }
 }
 .map-links {
