@@ -74,6 +74,10 @@
                     <input type="email" name="email" placeholder="E-mail" required>
                 </div>
 
+                <div class="form-group">
+                    <input type="tel" name="telefoon" placeholder="Telefoonnummer (verplicht als je gebeld wilt worden)" autocomplete="tel" maxlength="20">
+                </div>
+
                 <div class="form-checkbox">
                     <label>
                         <input type="checkbox" name="bellen" value="1">

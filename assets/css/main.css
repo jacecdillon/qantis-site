@@ -1092,6 +1092,7 @@ main, #content, .site-main {
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
+.contact-form input[type="tel"],
 .contact-form textarea {
     width: 100%;
     background-color: var(--navy2);

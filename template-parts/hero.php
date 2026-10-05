@@ -9,7 +9,10 @@ $hero_btn_1_link  = get_field('hero_button_1_link', $page_id) ?: '#contact';
 $hero_btn_2_tekst = get_field('hero_button_2_tekst', $page_id) ?: 'Onze diensten';
 $hero_btn_2_link  = get_field('hero_button_2_link', $page_id) ?: '#diensten';
 
-$hero_btn_class   = ( mb_strlen( $hero_btn_1_tekst ) + mb_strlen( $hero_btn_2_tekst ) > 32 ) ? ' hero-buttons--compact' : '';
+$hero_btn_class   = ' hero-buttons--compact';
+if ( mb_strlen( $hero_btn_1_tekst ) + mb_strlen( $hero_btn_2_tekst ) <= 32 ) {
+    $hero_btn_class .= ' hero-buttons--short';
+}
 
 $hero_afbeelding  = get_field('hero_afbeelding', $page_id);
 $hero_bg_url      = '';
