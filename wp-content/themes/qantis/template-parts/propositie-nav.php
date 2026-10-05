@@ -9,7 +9,7 @@ $proposities = new WP_Query(array(
     'meta_value' => 'page-propositie.php',
     'post__not_in' => $excluded_ids,
     'orderby' => 'menu_order',
-    'order' => 'DESC',
+    'order' => 'ASC',
 ));
 
 $dot_colors = array('#1782C4','#E86A2C','#1A9E5C');

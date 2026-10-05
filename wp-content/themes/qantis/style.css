@@ -13,16 +13,6 @@ Version: 1.0
     margin: 0;
     padding: 0;
 }
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-
 :root {
     --navy: #0d1b2e;
     --navy2: #112240;
@@ -32,16 +22,15 @@ Version: 1.0
     --blue: #1782C4;
     --orange: #E86A2C;
     --green: #1A9E5C ;
+    --light-blue: #3fa0d8;
     --accent-dim: rgba(23, 130, 196, 0.12);
     --white: #ffffff;
     --muted: rgba(255, 255, 255, 0.6);
     --r: 6px;
 }
 
-
-
 body {
-    font-family: 'Inter', sans-serif;
+    font-family:'Inter', sans-serif;
     background: var(--navy);
     color: var(--white);
     line-height: 1.6;
@@ -61,6 +50,9 @@ a {
     align-items: center;
     background: var(--navy);
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 .brand-logo {
     display: inline-flex;
@@ -78,13 +70,16 @@ a {
     color: var(--accent); 
 }
 .phone {
-    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-    font-variant-emoji: emoji;
     margin-left: 0;
-    color: var(--white);
+    color: var(--white)!important;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.02em;
+}
+
+.phone .fa-phone {
+    margin-right: 0.45em;
+    color: red;
 }
 
 .brand-logo svg {
@@ -142,6 +137,7 @@ a {
     display: flex;
     gap: 15px;
     padding-right: 30px;
+    font-weight: 100;
 }
 .footer-links :hover{
     color: white;
@@ -264,12 +260,17 @@ a {
 }
 
 .hero h1 {
-    margin-bottom: 16px;
+    
     font-size: clamp(32px, 4vw, 54px);
     font-weight: 800;
     line-height: 1.1;
 }
-
+.titel-color{
+    color: var(--light-blue);
+}
+.hero-titels{
+    margin-bottom: 15px;
+}
 .hero-sub {
     max-width: 480px;
     margin-bottom: 36px;
@@ -785,11 +786,47 @@ a {
     }
 }
 
-
 .page-id-204 .section-stappen{
     background-color: var(--navy);
 }
 
+
+.page-id-396 .hero {
+    position: relative;
+    background-color: var(--navy);
+    overflow: hidden;
+}
+.page-id-396 .hero::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+   
+    background: none !important;
+    
+    background-image: var(--hero-image) !important;
+    background-repeat: repeat !important;
+    background-position: center !important;
+    background-size: 60px 70px !important;
+    
+    filter: brightness(3) contrast(1.5);
+    opacity: 0.8 !important;
+    
+    mix-blend-mode: normal !important;
+    pointer-events: none !important;
+}
+.page-id-396 .hero::after {
+    display: none !important;
+}
+.page-id-396 .hero-content {
+    position: relative !important;
+    z-index: 3 !important;
+    background-color: color-mix(in srgb, var(--navy2) 70%, transparent);
+    max-width: 600px;
+}
+.page-id-396 .hero-tag{
+    color: var(--light-blue);
+}
 .page-id-396 .propositie-nav{
     display: none;
 }
@@ -811,8 +848,26 @@ a {
     display: none;
 }
 .page-id-396 h1{
-    font-size: 65px;
+    font-size: 48px;
 }
+
+.page-id-396 .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    
+    background-image: var(--hero-image);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 60px 70px; /* Розмір шестикутника */
+    
+    opacity: 0.35; 
+    
+    mix-blend-mode: overlay; 
+    pointer-events: none;
+}
+
 
 .prop-strip{
     display: grid;
@@ -839,7 +894,7 @@ a {
         transform: translateX(5px);
     }
 }
-.ps-item:nth-child(3n+1) {border-top:3px solid var(--blue);}
+.ps-item:nth-child(3n+1) {border-top:3px solid var(--light-blue);}
 .ps-item:nth-child(3n+2) {border-top:3px solid var(--orange);}
 .ps-item:nth-child(3n+3) {border-top:3px solid var(--green);}
 .ps-num{
@@ -888,7 +943,7 @@ a {
     font-size: 14px;
     font-weight: 700;
 }
-.ps-item:nth-child(3n+1) .ps-link p{ color: var(--blue); }
+.ps-item:nth-child(3n+1) .ps-link p{ color: var(--light-blue); }
 .ps-item:nth-child(3n+2) .ps-link p{ color: var(--orange); }
 .ps-item:nth-child(3n+3) .ps-link p{ color: var(--green); }
 .ps-arrow{
@@ -902,7 +957,7 @@ a {
     padding: 80px 48px;
 }
 .section-tag {
-    color: var(--accent);
+    color: var(--light-blue);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -935,7 +990,7 @@ a {
     flex-direction: column;
     transition: transform .2s;
 }
-.prop-card:nth-child(3n+1) {border-top:3px solid var(--blue);}
+.prop-card:nth-child(3n+1) {border-top:3px solid var(--light-blue);}
 .prop-card:nth-child(3n+2) {border-top:3px solid var(--orange);}
 .prop-card:nth-child(3n+3) {border-top:3px solid var(--green);}
 .prop-head {
@@ -981,13 +1036,13 @@ a {
     border-radius: 50%;
     flex-shrink: 0;
 }
-.prop-card:nth-child(3n+1) .prop-list p::before {background-color: var(--blue);}
+.prop-card:nth-child(3n+1) .prop-list p::before {background-color: var(--light-blue);}
 .prop-card:nth-child(3n+2) .prop-list p::before {background-color:var(--orange);}
 .prop-card:nth-child(3n+3) .prop-list p::before {background-color: var(--green);}
 .prop-link {
     padding: 0 28px 28px;
 }
-.prop-card:nth-child(3n+1) .prop-link {color:var(--blue)}
+.prop-card:nth-child(3n+1) .prop-link {color:var(--light-blue)}
 .prop-card:nth-child(3n+2) .prop-link {color:var(--orange)}
 .prop-card:nth-child(3n+3) .prop-link {color:var(--green)}
 
@@ -1034,7 +1089,7 @@ a {
     text-transform: uppercase;
     margin-bottom: 32px;
     line-height: 1.75;
-    color: var(--blue);
+    color: var(--light-blue);
 }
 .alkmaar-stats {
     display: grid;
@@ -1050,7 +1105,7 @@ a {
 .stat-num {
     font-size: 28px;
     font-weight: 800;
-    color: var(--blue);
+    color: var(--light-blue);
     margin-bottom: 4px;
 }
 .stat-label {
@@ -1115,7 +1170,7 @@ a {
     font-weight: 800;
 }
 .opd-header a {
-    color: var(--blue);
+    color: var(--light-blue);
     font-size: 14px;
     font-weight: 500;
 }
@@ -1195,24 +1250,182 @@ a {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 64px;
     align-items: start;
+    max-width: 1040px;
+    margin: 0 auto;
 }
 .contact-info h2 {
     font-size: 26px;
     font-weight: 800;
     margin-bottom: 24px;
 }
+.contact-info strong {
+    color: var(--white);
+}
+.contact-info span{
+    margin: 20px;
+}
+.contact-a{
+    color: var(--light-blue);
+}
+.adress{
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
 #dark-map-container {
-  max-width: 250px;
-  height: 140px;
+    width: 100%;
+    max-width: 488px;
+    height: 202px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
-/* Прибираємо будь-які CSS-фільтри, бо тайли вже оригінально темні */
 #dark-map-container .leaflet-tile-pane {
   filter: none !important;
 }
+#dark-map-container .leaflet-control-zoom {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 5px;
+    background: #20252b;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+}
+#dark-map-container .leaflet-control-zoom a,
+#dark-map-container .leaflet-control-zoom a:hover {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 30px !important;
+    height: 28px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #20252b !important;
+    color: #d8dadd !important;
+    text-align: center;
+    text-indent: 0 !important;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1 !important;
+    box-shadow: none !important;
+}
+#dark-map-container .leaflet-control-zoom a:first-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+#dark-map-container .leaflet-control-zoom a:hover {
+    background: #343a40 !important;
+    color: #fff !important;
+}
+
+.contact-form-label {
+    color: var(--light-blue);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+}
+.custom-form {
+
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.custom-form .form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.custom-form .form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="email"],
+.custom-form textarea {
+  width: 100%;
+  background-color: #172a46;
+  border: 1px solid #233b5d;
+  border-radius: 6px;
+  padding: 12px 15px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.custom-form input::placeholder,
+.custom-form textarea::placeholder {
+  color: #6b7c96;
+}
+
+.custom-form .checkbox-group label {
+  color: #d1d5db;
+  cursor: pointer;
+}
+
+.custom-form button[type="submit"] {
+  width: 100%;
+  background-color: var(--light-blue);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.custom-form button[type="submit"]:hover {
+  background-color: #156da7;
+}
+
+
+@media (max-width: 760px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #dark-map-container {
+        max-width: none;
+    }
+}
+.map-links {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 9999; 
+    margin: 0; 
+    padding: 2px 4px; 
+    display: block;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: auto;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+#dark-map-container .map-links a{
+    display: inline;
+    color: #fff;
+    text-decoration: none;
+    white-space: normal;
+}
+#dark-map-container .map-links a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    max-height: 200px;
+}
+img .emoji{color: red !important;}
