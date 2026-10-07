@@ -1350,8 +1350,13 @@ a {
   width: 100%;
 }
 
+.custom-form .phone-group[hidden] {
+  display: none;
+}
+
 .custom-form input[type="text"],
 .custom-form input[type="email"],
+.custom-form input[type="tel"],
 .custom-form textarea {
   width: 100%;
   background-color: #172a46;

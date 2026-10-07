@@ -50,6 +50,7 @@ function handle_custom_contact_form() {
         $company = sanitize_text_field($_POST['custom_company']);
         $email   = sanitize_email($_POST['custom_email']);
         $call_me = (!empty($_POST['custom_call_me']) && $_POST['custom_call_me'] == '1') ? 'Ja' : 'Nee';
+        $phone   = sanitize_text_field($_POST['custom_phone'] ?? '');
         $message = sanitize_textarea_field($_POST['custom_message']);
 
     
@@ -59,7 +60,8 @@ function handle_custom_contact_form() {
         $body  = "Naam: $name\n";
         $body .= "Bedrijf: $company\n";
         $body .= "Email: $email\n";
-        $body .= "Terugbellen: $call_me\n\n";
+        $body .= "Terugbellen: $call_me\n";
+        $body .= "Telefoonnummer: $phone\n\n";
         $body .= "Bericht:\n$message\n";
 
         $headers = array(

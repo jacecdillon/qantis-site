@@ -43,5 +43,5 @@ $selected_menu_id = get_field('menu_keuze') ?: 12;
             ]);
             ?>
         </div>
-        <p class="phone"><i class="fa-solid fa-phone" aria-hidden="true"></i><?php echo esc_html($phone); ?></p>
+        <a class="phone" href="tel:+31<?php echo esc_html($phone)?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><?php echo esc_html($phone); ?></>
     </header>

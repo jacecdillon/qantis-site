@@ -23,9 +23,9 @@ $lng = $kaart['kaart']['longitude'] ?? $kaart['lng'] ?? '4.7534';
                     <h2>
                         <?php echo esc_html($kaart['title'] ?? ''); ?>
                     </h2>
-                    <p>
+                    <a href="tel:+31<?php echo esc_html($kaart['mobiel'] ?? ''); ?>">
                         <strong><?php echo esc_html($kaart['mobiel'] ?? ''); ?></strong>
-                    </p>
+</a>
                     <p>
                         <a href="mailto:<?php echo esc_attr($kaart['email'] ?? ''); ?>" class="contact-a">
                             <?php echo esc_html($kaart['email'] ?? ''); ?></a>
@@ -75,9 +75,13 @@ $lng = $kaart['kaart']['longitude'] ?? $kaart['lng'] ?? '4.7534';
                         <div class="form-group checkbox-group">
                             <label>
                                 <input type="hidden" name="custom_call_me" value="0" />
-                                <input type="checkbox" name="custom_call_me" value="1" />
+                                <input type="checkbox" name="custom_call_me" value="1" id="custom-call-me" />
                                 Ik word liever gebeld
                             </label>
+                        </div>
+
+                        <div class="form-group phone-group" id="custom-phone-group" hidden>
+                            <input type="tel" name="custom_phone" id="custom-phone" placeholder="Telefoonnummer" autocomplete="tel" />
                         </div>
 
                         <div class="form-group">
@@ -94,6 +98,20 @@ $lng = $kaart['kaart']['longitude'] ?? $kaart['lng'] ?? '4.7534';
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        var callMeCheckbox = document.getElementById('custom-call-me');
+        var phoneGroup = document.getElementById('custom-phone-group');
+        var phoneInput = document.getElementById('custom-phone');
+
+        function togglePhoneField() {
+            var isChecked = callMeCheckbox.checked;
+            phoneGroup.hidden = !isChecked;
+            phoneInput.required = isChecked;
+            phoneInput.setAttribute('aria-hidden', String(!isChecked));
+        }
+
+        callMeCheckbox.addEventListener('change', togglePhoneField);
+        togglePhoneField();
+
         var mapLat = parseFloat(<?php echo json_encode($lat); ?>);
         var mapLng = parseFloat(<?php echo json_encode($lng); ?>);
 
