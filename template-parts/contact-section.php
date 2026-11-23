@@ -1,0 +1,98 @@
+<section id="contact" class="contact-section">
+    <div class="footer-container">
+        
+        <div class="footer-contact-info">
+            <span class="footer-subtitle">
+                <?php echo esc_html(get_field('footer_contact_subtitle', 'option') ?: 'CONTACT'); ?>
+            </span>
+            <h2 class="footer-title">
+                <?php echo esc_html(get_field('footer_contact_titel', 'option') ?: 'Neem contact op'); ?>
+            </h2>
+
+            <div class="contact-details">
+                <?php if ($telefoon = get_field('telefoonnummer', 'option')) : ?>
+                    <p class="phone"><a href="<?php echo esc_attr( qantis_phone_href() ); ?>"><strong><?php echo esc_html($telefoon); ?></strong></a></p>
+                <?php endif; ?>
+
+                <?php if ($email = get_field('emailadres', 'option')) : ?>
+                    <p>
+                        <a href="mailto:<?php echo esc_attr($email); ?>" class="email-link">
+                            <?php echo esc_html($email); ?>
+                        </a>
+                    </p>
+                <?php endif; ?>
+
+                <br>
+
+                <?php if ($openingstijden = get_field('openingstijden', 'option')) : ?>
+                    <p class="hours"><strong><?php echo esc_html($openingstijden); ?></strong></p>
+                <?php endif; ?>
+            </div>
+
+            <div class="address-details">
+                <?php if ($adres_1 = get_field('adres_regel_1', 'option')) : ?>
+                    <p><?php echo esc_html($adres_1); ?></p>
+                <?php endif; ?>
+                
+                <?php if ($adres_2 = get_field('adres_regel_2', 'option')) : ?>
+                    <p><?php echo esc_html($adres_2); ?></p>
+                <?php endif; ?>
+            </div>
+
+            <div class="footer-map">
+                <?php if ($map_url = get_field('kaart_embed_url', 'option')) : ?>
+                    <iframe 
+                        src="<?php echo esc_url($map_url); ?>" 
+                        width="100%" 
+                        height="180" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="footer-form-wrapper">
+            <span class="footer-subtitle">
+                <?php echo esc_html(get_field('footer_form_subtitle', 'option') ?: 'OF PLAN EEN KENNISMAKINGSGESPREK'); ?>
+            </span>
+            
+            <form id="qantis-contact-form" class="contact-form">
+                <?php wp_nonce_field('qantis_contact_nonce', 'nonce'); ?>
+
+                <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                    <label for="website_hp">Laat dit veld leeg</label>
+                    <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                    <input type="text" name="naam" placeholder="Naam" required>
+                    <input type="text" name="bedrijfsnaam" placeholder="Bedrijfsnaam">
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="telefoon" placeholder="Telefoonnummer (verplicht als je gebeld wilt worden)" autocomplete="tel" maxlength="20">
+                </div>
+
+                <div class="form-checkbox">
+                    <label>
+                        <input type="checkbox" name="bellen" value="1">
+                        <span>Ik word liever gebeld</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="bericht" rows="5" placeholder="Bericht" required maxlength="500"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Verstuur</button>
+                <div id="form-response"></div>
+            </form>
+        </div>
+
+    </div>
+</section>

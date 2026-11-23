@@ -1,0 +1,803 @@
+/*   1. CSS Custom Properties & Base Styles */
+
+:root {
+    --bg-dark: #071327;
+    --bg-card: #0c1e3a;
+    --bg-card-hover: #10264a;
+    --accent-blue: #1d82ca;
+    --accent-orange: #ff6b00;
+    --accent-green: #10b981;
+    --text-white: #ffffff;
+    --text-muted: #8899ac;
+    --navy: #0D1B2E;
+    --navy-dark: #0D1B2E;
+    --navy2: #112240;
+    --navy3: #162D4A;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --border-nav: rgba(255, 255, 255, 0.1);
+    
+    --accent: var(--accent-blue);
+}
+
+.propositie-page.theme-blue, .diensten-grid-section.theme-blue { --accent: var(--accent-blue); }
+.propositie-page.theme-orange, .diensten-grid-section.theme-orange { --accent: var(--accent-orange); }
+.propositie-page.theme-green, .diensten-grid-section.theme-green { --accent: var(--accent-green); }
+
+body, 
+.propositie-page {
+    background-color: var(--navy);
+    color: var(--text-white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.hero-section .container {
+    max-width: 100%;
+    padding-left: 45px;
+}
+
+.section-tag, 
+.hero-tag {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.26px;
+    margin: 0 0 12px;
+    color: var(--text-white);
+}
+
+.section-subtext {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 0 40px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    filter: brightness(0.9);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-light);
+    color: #fff;
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: var(--border-light);  
+}
+
+/*   2. Header & Top Navigatie*/
+
+.site-header-propositie .header-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.site-header-propositie .propositie-navigation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(0);
+    margin: 0;
+}
+
+.site-header-propositie .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-header-propositie .nav-menu a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    transition: all 0.25s ease;
+}
+
+.site-header-propositie .nav-menu a:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-color: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="it-staffing"] {
+    color: var(--accent-blue);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="ot-civiel"] {
+    color: var(--accent-orange);
+}
+
+.site-header-propositie .nav-menu li.current-menu-item a[href*="qaas-mkb"] {
+    color: var(--accent-green);
+}
+
+/*   3. Subnavigatie Bar*/
+
+.propositie-nav-bar {
+    background-color: #0c1b33;
+    border-top: 1px solid var(--border-nav);
+    width: 100%;
+    position: relative;
+}
+
+.propositie-nav-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--accent);
+}
+
+.propositie-nav-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.propositie-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 32px 22px 36px;
+    width: 100%;
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-right: 1px solid var(--border-nav);
+    background-color: transparent;
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.propositie-tab:last-child {
+    border-right: none;
+}
+
+.propositie-tab:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.propositie-tab.is-active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.dot-blue { background-color: var(--accent-blue); }
+.dot-orange { background-color: var(--accent-orange); }
+.dot-green { background-color: var(--accent-green); }
+
+.tab-label {
+    letter-spacing: 0.3px;
+}
+
+/*   4. Page Sections    */
+
+.hero-section {
+    padding: 120px 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 20px;
+    line-height: 1.1;
+}
+
+.dienstmodel-section .hero-subtitle, 
+.usp-grid-section .hero-subtitle {
+    color: var(--accent);
+}
+
+.dienstmodel-section .hero-subtitle {
+    color: var(--accent);
+}
+
+.quick-scan-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.dienstmodel-section {
+    padding-top: 0;
+    margin-top: -90px;
+}
+
+.quick-scan-action {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dienstmodel-section .badge {
+    background-color: rgba(28, 160, 91, 0.15);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.hero-text {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.hero-text p {
+    font-size: 1.125rem;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.hero-img, 
+.stappen-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.diensten-grid-section {
+    padding: 80px 0;
+    padding-bottom: 1px;
+    padding-top: 95px;
+    padding-bottom: 70px
+}
+
+.dienst-icoon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 20px;
+    color: var(--accent);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+
+.dienst-icoon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+}
+
+.dienst-icoon-img {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+
+.dienst-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.dienst-kaart {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 32px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.dienst-kaart:hover {
+    transform: translateY(-4px);
+}
+
+.dienst-kaart.border-blue, 
+.dienst-kaart.Blauw, 
+.dienst-kaart[data-kleur*="blauw"], 
+.dienst-kaart[data-kleur*="Blue"] {
+    border-top: 4px solid var(--accent-blue) !important;
+}
+
+.dienst-kaart.border-orange, 
+.dienst-kaart.Oranje, 
+.dienst-kaart[data-kleur*="oranje"], 
+.dienst-kaart[data-kleur*="Orange"] {
+    border-top: 4px solid var(--accent-orange) !important;
+}
+
+.dienst-kaart.border-green, 
+.dienst-kaart.Groen, 
+.dienst-kaart[data-kleur*="groen"], 
+.dienst-kaart[data-kleur*="Green"] {
+    border-top: 4px solid var(--accent-green) !important;
+}
+
+.dienst-titel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.dienst-tekst {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.stappen-section {
+    padding: 80px 0;
+}
+
+.stappen-section .stap-nummer {
+    background-color: rgba(28, 160, 91, 0.15);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.stappen-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.stappen-lijst {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.stap-item {
+    display: flex;
+    gap: 18px;
+}
+
+.stap-nummer {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.stap-info h4 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.stap-info p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.extra-sectie {
+    padding-top: 95px;
+    padding-bottom: 95px;
+}
+
+.stappen-section + .extra-sectie {
+    padding-top: 0;
+}
+
+.extra-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.extra-grid-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.extra-grid-card.border-blue   { border-top: 4px solid var(--accent-blue); }
+.extra-grid-card.border-orange { border-top: 4px solid var(--accent-orange); }
+.extra-grid-card.border-green  { border-top: 4px solid var(--accent-green); }
+
+body.theme-orange .extra-grid-card.border-blue {
+    border-top: none;
+    border-left: 4px solid var(--accent-blue);
+}
+
+body.theme-orange .extra-grid-card.border-orange {
+    border-top: none;
+    background-color: var(--navy);
+    border-left: 4px solid var(--accent-orange);
+}
+
+body.theme-orange .extra-grid-card.border-green {
+    border-top: none;
+    border-left: 4px solid var(--accent-green);
+}
+
+.bullet-dot {
+    color: var(--accent);
+    font-size: 1.4rem;
+}
+
+.extra-card-titel {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cta-banner {
+    background-color: var(--accent);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: #fff;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 32px;
+}
+
+.btn-cta {
+    background: #ffffff;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.btn-cta:hover {
+    background: #f0f0f0;
+}
+
+body.theme-orange .extra-card-titel::before {
+    display: none;
+}
+
+body.theme-orange .extra-sectie {
+    background-color: var(--navy2);
+}
+
+/*   5. Responsive Styles */
+
+@media (max-width: 992px) {
+    .hero-container, 
+    .stappen-container { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .grid-wrapper { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 900px) {
+    .propositie-nav-container {
+        flex-direction: column;
+    }
+    
+    .propositie-tab {
+        border-right: none;
+        border-bottom: 1px solid var(--border-nav);
+        padding-left: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-wrapper, 
+    .extra-grid-wrapper { 
+        grid-template-columns: 1fr; 
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .hero-title { 
+        font-size: 2.5rem; 
+    }
+}
+
+.split-sectie {
+    padding: 80px 0;
+}
+
+.split-sectie .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.split-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.split-image-col .content-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+}
+
+.split-content-col .section-header {
+    margin-bottom: 24px;
+}
+
+.split-content-col .section-tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.split-content-col .section-title {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.split-content-col .section-subtext {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.split-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.split-grid-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color 0.2s ease;
+}
+
+.split-grid-item:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.split-grid-item .bullet-dot {
+    color: var(--accent);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.split-grid-item .item-titel {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.split-grid-item .item-beschrijving {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+}
+
+@media (max-width: 968px) {
+    .split-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .split-grid-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .site-header-propositie .header-container {
+        position: static;
+    }
+
+    .site-header-propositie .propositie-navigation {
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: translateY(-8px);
+    }
+
+    .site-header.nav-open.site-header-propositie .propositie-navigation {
+        transform: translateY(0);
+    }
+
+    .site-header-propositie .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .site-header-propositie .nav-menu a {
+        display: flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 12px 4px;
+        font-size: 18px;
+        border: 0;
+        border-bottom: 1px solid var(--border-nav, rgba(255, 255, 255, 0.08));
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .site-header-propositie .nav-menu a:hover {
+        transform: none;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+.extra-kaart {
+    max-width: 720px;
+    padding: 32px;
+    border-radius: 10px;
+    background-color: var(--navy2, #14243B);
+    border-left: 4px solid var(--accent);
+    color: #ffffff;
+}
+.extra-kaart-titel { margin: 0 0 12px; font-size: 1.4rem; font-weight: 700; }
+.extra-kaart-tekst { margin: 0 0 20px; line-height: 1.6; color: rgba(255, 255, 255, 0.75); }
+
+body.theme-blue .stappen-section,
+body.theme-blue .extra-sectie {
+    background-color: var(--navy3);
+}
+
+@media (max-width: 576px) {
+    .hero-buttons.hero-buttons--compact {
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    .hero-buttons.hero-buttons--compact .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 12px 19px;
+        font-size: clamp(12px, 3.4vw, 14px);
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    .hero-buttons.hero-buttons--short {
+        width: calc(100% + 69px);
+        margin-left: -45px;
+        margin-right: -24px;
+        justify-content: center;
+    }
+
+    .hero-buttons.hero-buttons--short .btn {
+        flex: 0 1 auto;
+        padding: 11px 30px;
+        white-space: nowrap;
+    }
+}

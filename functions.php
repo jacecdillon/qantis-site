@@ -1,0 +1,142 @@
+<?php
+
+function qantis_theme_setup() {
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+
+    register_nav_menus(array(
+        'primary'     => __('Hoofdmenu', 'qantis'),
+    ));
+}
+add_action('after_setup_theme', 'qantis_theme_setup');
+
+require_once get_template_directory() . '/inc/cpt-registratie.php';
+require_once get_template_directory() . '/inc/contact-handler.php';
+require_once get_template_directory() . '/inc/helpers.php';
+
+function qantis_enqueue_assets() {
+    wp_enqueue_style( 'qantis-style', get_stylesheet_uri(), array(), '1.0.0' );
+
+    if ( file_exists( get_template_directory() . '/assets/css/main.css' ) ) {
+        wp_enqueue_style(
+            'qantis-main-style',
+            get_template_directory_uri() . '/assets/css/main.css',
+            array('qantis-style'),
+            filemtime(get_template_directory() . '/assets/css/main.css')
+        );
+    }
+
+    if ( is_front_page() ) {
+        $front_styles = array('thuisbasis', 'over-qantis', 'opdrachten', 'vacature-cta', 'cta-banner');
+        foreach ( $front_styles as $style ) {
+            $path = '/assets/css/' . $style . '.css';
+            if ( file_exists( get_template_directory() . $path ) ) {
+                wp_enqueue_style(
+                    'qantis-' . $style,
+                    get_template_directory_uri() . $path,
+                    array('qantis-main-style'),
+                    filemtime(get_template_directory() . $path)
+                );
+            }
+        }
+    }
+
+    if ( is_page_template('page-propositie.php') ) {
+        $path = '/assets/css/propositie.css';
+        if ( file_exists( get_template_directory() . $path ) ) {
+            wp_enqueue_style(
+                'qantis-propositie-style',
+                get_template_directory_uri() . $path,
+                array('qantis-main-style'),
+                filemtime(get_template_directory() . $path)
+            );
+        }
+    }
+
+    if ( ! is_front_page() && ( is_post_type_archive( 'opdrachten' ) || is_tax( 'propositie' ) ) ) {
+        $path = '/assets/css/opdrachten.css';
+        wp_enqueue_style(
+            'qantis-opdrachten',
+            get_template_directory_uri() . $path,
+            array('qantis-main-style'),
+            filemtime(get_template_directory() . $path)
+        );
+    }
+
+    if ( file_exists( get_template_directory() . '/assets/js/main.js' ) ) {
+        wp_enqueue_script(
+            'qantis-js',
+            get_template_directory_uri() . '/assets/js/main.js',
+            array(),
+            filemtime(get_template_directory() . '/assets/js/main.js'),
+            true
+        );
+    }
+
+    if ( file_exists( get_template_directory() . '/assets/js/contact.js' ) ) {
+        wp_enqueue_script(
+            'qantis-contact',
+            get_template_directory_uri() . '/assets/js/contact.js',
+            array(),
+            filemtime(get_template_directory() . '/assets/js/contact.js'),
+            true
+        );
+
+        wp_localize_script('qantis-contact', 'qantis_ajax', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('qantis_contact_nonce')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', 'qantis_enqueue_assets');
+
+if ( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title' => 'Site Opties',
+        'menu_title' => 'Site Opties',
+        'menu_slug'  => 'site-instellingen',
+        'capability' => 'edit_posts',
+        'redirect'   => false
+    ));
+}
+
+function qantis_accent_slug( $page_id = null ) {
+    $map = array(
+        '#1582ca' => 'blue',
+        '#e86a2c' => 'orange',
+        '#1a9e5c' => 'green',
+        'blue'    => 'blue',
+        'orange'  => 'orange',
+        'green'   => 'green',
+    );
+    $raw = function_exists('get_field') ? get_field( 'accent_kleur', $page_id ?: false ) : '';
+    $key = strtolower( trim( (string) $raw ) );
+    return isset( $map[ $key ] ) ? $map[ $key ] : 'blue';
+}
+
+function qantis_get_proposities() {
+    return new WP_Query( array(
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'meta_key'       => '_wp_page_template',
+        'meta_value'     => 'page-propositie.php',
+        'posts_per_page' => -1,
+        'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+        'no_found_rows'  => true,
+    ) );
+}
+
+function qantis_add_theme_body_class( $classes ) {
+    if ( is_page_template( 'page-propositie.php' ) ) {
+        $classes[] = 'propositie-page';
+        $classes[] = 'theme-' . qantis_accent_slug( get_queried_object_id() );
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'qantis_add_theme_body_class' );
+
+function qantis_flush_rewrites_on_activation() {
+    qantis_register_custom_post_types();
+    flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'qantis_flush_rewrites_on_activation' );

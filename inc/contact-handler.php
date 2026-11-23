@@ -1,0 +1,71 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+add_action('wp_ajax_submit_contact_form', 'qantis_handle_contact_form');
+add_action('wp_ajax_nopriv_submit_contact_form', 'qantis_handle_contact_form');
+
+function qantis_handle_contact_form() {
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'qantis_contact_nonce')) {
+        wp_send_json_error('Beveiligingscontrole mislukt.');
+    }
+
+    if (!empty($_POST['website_hp'])) {
+        wp_send_json_success('Bedankt voor je bericht!');
+    }
+
+    $naam         = isset($_POST['naam']) ? sanitize_text_field($_POST['naam']) : '';
+    $bedrijfsnaam = isset($_POST['bedrijfsnaam']) ? sanitize_text_field($_POST['bedrijfsnaam']) : '';
+    $email        = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $telefoon     = isset($_POST['telefoon']) ? sanitize_text_field($_POST['telefoon']) : '';
+    $telefoon     = preg_replace('/[^0-9+\-\s()]/', '', $telefoon);
+    $telefoon     = trim($telefoon);
+    $bellen       = isset($_POST['bellen']) ? 'Ja' : 'Nee';
+    $bericht      = isset($_POST['bericht']) ? sanitize_textarea_field($_POST['bericht']) : '';
+
+    if (empty($naam) || empty($email) || empty($bericht)) {
+        wp_send_json_error('Vul alle verplichte velden in.');
+    }
+
+    if (!is_email($email)) {
+        wp_send_json_error('Vul een geldig e-mailadres in.');
+    }
+
+    if ($bellen === 'Ja' && strlen(preg_replace('/\D/', '', $telefoon)) < 8) {
+        wp_send_json_error('Vul een geldig telefoonnummer in zodat we je kunnen bellen.');
+    }
+
+    $limiet_sleutel ='qantis_cf_' . md5( isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '' );
+    $pogingen       = (int) get_transient($limiet_sleutel);
+
+    if ($pogingen >= 3) {
+        wp_send_json_error('Je hebt te vaak een bericht verstuurd. Probeer het over een paar minuten opnieuw.');
+    }
+    set_transient($limiet_sleutel, $pogingen + 1, 10 * MINUTE_IN_SECONDS);
+
+    $to = get_field('emailadres', 'option') ?: 'recruitment@qantis.nl';
+    $subject = 'Nieuw contactbericht van ' . $naam;
+
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: Qantis Website <no-reply@qantis.nl>',
+        'Reply-To: ' . $naam . ' <' . $email . '>'
+    );
+
+    $body  = "<h2>Nieuw bericht via het contactformulier</h2>";
+    $body .= "<p><strong>Naam:</strong> " . esc_html($naam) . "</p>";
+    $body .= "<p><strong>Bedrijfsnaam:</strong> " . esc_html($bedrijfsnaam) . "</p>";
+    $body .= "<p><strong>E-mailadres:</strong> " . esc_html($email) . "</p>";
+    $body .= "<p><strong>Telefoonnummer:</strong> " . ($telefoon !== '' ? '<a href="tel:' . esc_attr(preg_replace('/[^0-9+]/', '', $telefoon)) . '">' . esc_html($telefoon) . '</a>' : '-') . "</p>";
+    $body .= "<p><strong>Voorkeur voor bellen:</strong> " . esc_html($bellen) . "</p>";
+    $body .= "<p><strong>Bericht:</strong><br>" . nl2br(esc_html($bericht)) . "</p>";
+
+    $sent = wp_mail($to, $subject, $body, $headers);
+
+    if ($sent) {
+        wp_send_json_success('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
+    } else {
+        wp_send_json_error('Er is een fout opgetreden bij het versturen.');
+    }
+}
